@@ -16,15 +16,25 @@ public class UI_Manager : MonoBehaviour
     private GameObject UI_NotEnoughPlanksText;
     [SerializeField]
     private GameObject UI_CarriedPlanksText;
+    [SerializeField]
+    private GameObject UI_TooHeavyText;
 
     [Header("Script references")]
     [SerializeField]
     private RaycastManager raycastManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Non-assignable variables
+    private PlankManager plankManager;
+    int currentPlanks;
+
+    private void Awake()
+    {
+        plankManager = this.gameObject.GetComponent<PlankManager>();
+    }
     void Start()
     {
-        UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + this.gameObject.GetComponent<PlankManager>().HeldPlanks();
+        currentPlanks = this.gameObject.GetComponent<PlankManager>().HeldPlanks();
+        UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
     }
 
     // Update is called once per frame
@@ -46,6 +56,8 @@ public class UI_Manager : MonoBehaviour
         {
             UI_BoardWindowText.SetActive(false);
         }
+
+        UI_TooHeavyText.SetActive(currentPlanks >= 5);
     }
 
     public void ShowNotEnoughPlanksText(float duration = 2f)
@@ -63,6 +75,7 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateHeldPlankNumber()
     {
-        UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + this.gameObject.GetComponent<PlankManager>().HeldPlanks();
+        currentPlanks = plankManager.HeldPlanks();
+        UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
     }
 }

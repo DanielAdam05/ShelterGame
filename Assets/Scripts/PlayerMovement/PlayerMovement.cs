@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private InputActionReference sprintActionReference;
 
+    [Header("Script Reference")]
+    [SerializeField]
+    private PlankManager plankManager;
+
     // Non-assignable variables
     private Vector3 playerDirection;
     private bool isCrouching = false;
@@ -75,29 +79,37 @@ public class PlayerMovement : MonoBehaviour
 
         moveSpeed = initialSpeed;
 
-        if (characterController.isGrounded)
+        if (plankManager.HeldPlanks() < 5)
         {
-            isCrouching = false;
-            characterController.height = 2f;
-
-            if (isCrouchHeld)
+            if (characterController.isGrounded)
             {
-                moveSpeed = crouchSpeed;
+                isCrouching = false;
+                characterController.height = 2f;
 
-                if ((characterController.height - 2f) <= 0.01f)
+                if (isCrouchHeld)
                 {
-                    characterController.height = 1f;
+                    moveSpeed = crouchSpeed;
+
+                    if ((characterController.height - 2f) <= 0.01f)
+                    {
+                        characterController.height = 1f;
+                    }
+
+                    isCrouching = true;
+                }
+                else if (isSprintHeld)
+                {
+                    moveSpeed = sprintSpeed;
                 }
 
-                isCrouching = true;
+                //Jump();
             }
-            else if (isSprintHeld)
-            {
-                moveSpeed = sprintSpeed;
-            }
-
-            //Jump();
         }
+        else
+        {
+            moveSpeed = crouchSpeed;
+        }
+        
 
         Vector3 playerMovement = moveSpeed * Time.deltaTime * desiredDirection;
         playerMovement.y = verticalVelocity * Time.deltaTime;
