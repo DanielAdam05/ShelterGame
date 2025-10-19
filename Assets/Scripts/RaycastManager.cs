@@ -3,39 +3,42 @@ using UnityEngine.InputSystem;
 
 public class RaycastManager : MonoBehaviour
 {
-    [Space(10)]
+    [Header("Raycast Settings")]
     [SerializeField]
     private float rayRange = 2f;
+    [SerializeField]
+    private LayerMask interactableLayers;
 
     // Non-assignable variables
     private RaycastHit hitRecord;
-    bool lookingAtPlank;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * rayRange, Color.red);
-
-        
     }
 
-    public bool LookingAtPlank()
+    //public T LookingAtComponent<T>() where T : Component // template function
+    //{
+    //    if (Physics.Raycast(transform.position, transform.forward, out hitRecord, rayRange, interactableLayers))
+    //    {
+    //        return hitRecord.collider?.GetComponent<T>();
+    //    }
+    //    return null;
+    //}
+
+    public bool LookingAtTag(string tag)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hitRecord, rayRange))
+        if (Physics.Raycast(transform.position, transform.forward, out hitRecord, rayRange, interactableLayers))
         {
-            if (hitRecord.collider != null)
-            {
-                if (hitRecord.collider.CompareTag("Plank"))
-                {
-                    return true;
-                }
-            }
+            return hitRecord.collider != null && hitRecord.collider.CompareTag(tag);
         }
         return false;
+    }
+
+    public RaycastHit GetHitRecord()
+    {
+        //Debug.Log("Got hit record");
+        return hitRecord;
     }
 }
