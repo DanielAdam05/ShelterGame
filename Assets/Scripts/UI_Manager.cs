@@ -18,10 +18,14 @@ public class UI_Manager : MonoBehaviour
     private GameObject UI_CarriedPlanksText;
     [SerializeField]
     private GameObject UI_TooHeavyText;
+    [SerializeField]
+    private RawImage UI_FreezeEffectImage;
 
     [Header("Script references")]
     [SerializeField]
-    private RaycastManager raycastManager;
+    private RaycastManager raycastManagerReference;
+    [SerializeField]
+    private Freezing freezingReference;
 
     // Non-assignable variables
     private PlankManager plankManager;
@@ -37,27 +41,15 @@ public class UI_Manager : MonoBehaviour
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        UI_PickupText.SetActive(raycastManager.LookingAtTag("Plank"));
+        UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank"));
 
-        if (raycastManager.LookingAtTag("Window"))
-        {
-            WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
-
-            if (currentWindow != null && !currentWindow.IsWindowBoarded())
-            {
-                UI_BoardWindowText.SetActive(true);
-            }
-            else UI_BoardWindowText.SetActive(false);
-        }
-        else
-        {
-            UI_BoardWindowText.SetActive(false);
-        }
+        ManageWindowBoardingUI();
 
         UI_TooHeavyText.SetActive(currentPlanks >= 5);
+
+        CalculateFreezeImageAlpha();
     }
 
     public void ShowNotEnoughPlanksText(float duration = 2f)
@@ -77,5 +69,31 @@ public class UI_Manager : MonoBehaviour
     {
         currentPlanks = plankManager.HeldPlanks();
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
+    }
+
+    private void ManageWindowBoardingUI()
+    {
+        if (raycastManagerReference.LookingAtTag("Window"))
+        {
+            WindowClass currentWindow = raycastManagerReference.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+
+            if (currentWindow != null && !currentWindow.IsWindowBoarded())
+            {
+                UI_BoardWindowText.SetActive(true);
+            }
+            else UI_BoardWindowText.SetActive(false);
+        }
+        else
+        {
+            UI_BoardWindowText.SetActive(false);
+        }
+    }
+
+    private void CalculateFreezeImageAlpha()
+    {
+        Color color = UI_FreezeEffectImage.color;
+        color.a = freezingReference.FreezeMeter() / 400f;
+
+        UI_FreezeEffectImage.color = color;
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3025961558589720187}
   - component: {fileID: 8097612836790261266}
   m_Layer: 7
-  m_Name: WindowCollider
+  m_Name: Window
   m_TagString: Window
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
