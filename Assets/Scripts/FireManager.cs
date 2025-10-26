@@ -65,10 +65,10 @@ public class FireManager : MonoBehaviour
     public void ChangeFireStrength(float change)
     {
         fireStrength += change;
-        Debug.Log("Fire strength change is: " + change);
+        //Debug.Log("Fire strength change is: " + change);
 
         fireStrength = Mathf.Clamp01(fireStrength);
-        Debug.Log("FIRE STRENGTH:  " + fireStrength);
+        //Debug.Log("FIRE STRENGTH:  " + fireStrength);
         UpdateFireAppearance();
 
         currentFireTimer = 0f;
