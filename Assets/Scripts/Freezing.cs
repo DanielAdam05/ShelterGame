@@ -3,28 +3,38 @@ using UnityEngine;
 
 public class Freezing : MonoBehaviour
 {
-    [Tooltip("Collider of area where freezing does not occur")]
+    [Range(0, 100)]
     [SerializeField]
-    private BoxCollider warmRoomCollider;
+    private float freezeMeter = 0f;
+
+    [Space(5)]
+    [SerializeField]
+    private float FREEZE_SPEED = 0.036f;
 
     [Space(10)]
     [SerializeField]
     private Transform playerTransform;
 
-    [Space(10)]
+    [Tooltip("Collider of area where freezing does not occur")]
     [SerializeField]
-    private float freezeMeter = 0;
+    private BoxCollider warmRoomCollider;
 
     // Non-assignable variables
     private float currentFreezeTimer;
     private const float FREEZE_INTERVAL = 0.01f;
 
-    private const float FREEZE_SPEED = 0.033f;
+    private FireManager fireManagerRef;
 
-
+    private void Awake()
+    {
+        if (fireManagerRef == null)
+        {
+            fireManagerRef = gameObject.GetComponent<FireManager>();
+        }
+    }
     void Start()
     {
-        freezeMeter = 0;
+        freezeMeter = 0f;
     }
 
     void Update()

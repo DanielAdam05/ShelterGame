@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plank
   - Window
+  - Fireplace
   layers:
   - Default
   - TransparentFX

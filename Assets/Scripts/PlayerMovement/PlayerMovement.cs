@@ -42,11 +42,10 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         initialSpeed = moveSpeed;
-    }
-
-    private void Start()
-    {
-        characterController = GetComponent<CharacterController>();
+        if (characterController == null)
+        {
+            characterController = GetComponent<CharacterController>();
+        }
     }
 
     // Update is called once per frame

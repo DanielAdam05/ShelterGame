@@ -19,6 +19,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     private GameObject UI_TooHeavyText;
     [SerializeField]
+    private GameObject UI_ExtendFireText;
+    [SerializeField]
     private RawImage UI_FreezeEffectImage;
 
     [Header("Script references")]
@@ -33,11 +35,18 @@ public class UI_Manager : MonoBehaviour
 
     private void Awake()
     {
-        plankManager = this.gameObject.GetComponent<PlankManager>();
+        if (plankManager == null)
+        {
+            plankManager = gameObject.GetComponent<PlankManager>();
+        }
     }
     void Start()
     {
-        currentPlanks = this.gameObject.GetComponent<PlankManager>().HeldPlanks();
+        if (plankManager != null)
+        {
+            currentPlanks = gameObject.GetComponent<PlankManager>().HeldPlanks();
+        }
+        
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
     }
 
@@ -46,6 +55,8 @@ public class UI_Manager : MonoBehaviour
         UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank"));
 
         ManageWindowBoardingUI();
+
+        UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
 
         UI_TooHeavyText.SetActive(currentPlanks >= 5);
 

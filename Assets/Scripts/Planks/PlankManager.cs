@@ -25,8 +25,20 @@ public class PlankManager : MonoBehaviour
     private RaycastManager raycastManager;
 
     // Non-assignable variables
+    private UI_Manager uiManagerRef;
+    private FireManager fireManagerRef;
 
-
+    private void Awake()
+    {
+        if (uiManagerRef == null)
+        {
+            uiManagerRef = gameObject.GetComponent<UI_Manager>();
+        }
+        if (fireManagerRef == null)
+        {
+            fireManagerRef = gameObject.GetComponent<FireManager>();
+        }
+    }
     void Start()
     {
         //Debug.Log("Carried planks: " + heldPlanks);
@@ -58,7 +70,7 @@ public class PlankManager : MonoBehaviour
             if (raycastManager.LookingAtTag("Plank"))
             {
                 GetPlank();
-                this.gameObject.GetComponent<UI_Manager>().UpdateHeldPlankNumber();
+                uiManagerRef.UpdateHeldPlankNumber();
             }
             else if (raycastManager.LookingAtTag("Window") && heldPlanks < 3)
             {
@@ -66,8 +78,12 @@ public class PlankManager : MonoBehaviour
 
                 if (!currentWindow.IsWindowBoarded())
                 {
-                    this.gameObject.GetComponent<UI_Manager>().ShowNotEnoughPlanksText(2f);
+                    uiManagerRef.ShowNotEnoughPlanksText(2f);
                 }
+            }
+            else if (raycastManager.LookingAtTag("Fireplace") && heldPlanks < 1)
+            {
+                uiManagerRef.ShowNotEnoughPlanksText(2f);
             }
         }
         else if (context.interaction is HoldInteraction)
@@ -81,20 +97,36 @@ public class PlankManager : MonoBehaviour
                 {
                     if (!currentWindow.IsWindowBoarded())
                     {
-                        this.gameObject.GetComponent<UI_Manager>().ShowNotEnoughPlanksText(2f);
+                        uiManagerRef.ShowNotEnoughPlanksText(2f);
                     }
                 }
                 else
                 {
                     //Debug.Log("Used 3 planks to board window");
                     heldPlanks -= 3;
-                    this.gameObject.GetComponent<UI_Manager>().UpdateHeldPlankNumber();
+                    uiManagerRef.UpdateHeldPlankNumber();
 
                     // spawn planks around window logic
                     if (currentWindow != null && !currentWindow.IsWindowBoarded())
                     {
                         currentWindow.BoardWindow();
                     }
+                }
+            }
+            else if (raycastManager.LookingAtTag("Fireplace"))
+            {
+                if (heldPlanks < 1)
+                {
+                    uiManagerRef.ShowNotEnoughPlanksText();
+                }
+                else
+                {
+                    Debug.Log("Used 1 plank to extend fire");
+                    heldPlanks -= 1;
+                    uiManagerRef.UpdateHeldPlankNumber();
+
+                    // use plank to extend fire logic
+                    fireManagerRef.ChangeFireStrength(0.4f);
                 }
             }
         }

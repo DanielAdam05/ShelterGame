@@ -11,7 +11,6 @@ public class RaycastManager : MonoBehaviour
     // Non-assignable variables
     private RaycastHit hitRecord;
 
-    // Update is called once per frame
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * rayRange, Color.red);
@@ -37,7 +36,6 @@ public class RaycastManager : MonoBehaviour
 
     public RaycastHit GetHitRecord()
     {
-        //Debug.Log("Got hit record");
         return hitRecord;
     }
 }
