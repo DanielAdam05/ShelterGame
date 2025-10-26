@@ -48,7 +48,7 @@ public class Freezing : MonoBehaviour
         {
             currentFreezeTimer -= FREEZE_INTERVAL;
 
-            if (!IsPlayerInWarmRoom()) // freeze
+            if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
             {
                 freezeMeter += FREEZE_SPEED;
             }

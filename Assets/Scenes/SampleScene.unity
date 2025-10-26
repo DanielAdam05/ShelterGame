@@ -12659,6 +12659,7 @@ MonoBehaviour:
   FIRE_INTERVAL: 15
   fireLight: {fileID: 1193902559}
   fireSystem: {fileID: 7317291032939009786}
+  fireAudio: {fileID: 1710667390}
 --- !u!1 &1071266134
 GameObject:
   m_ObjectHideFlags: 0

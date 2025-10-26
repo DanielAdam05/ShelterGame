@@ -16,6 +16,8 @@ public class FireManager : MonoBehaviour
     private Light fireLight;
     [SerializeField]
     private ParticleSystem fireSystem;
+    [SerializeField]
+    private AudioSource fireAudio;
 
     // Non-assignable variables
     private Vector3 intialParticleSystemScale;
@@ -27,7 +29,6 @@ public class FireManager : MonoBehaviour
     void Start()
     {
         intialParticleSystemScale = fireSystem.transform.localScale;
-        //Debug.Log("Fire scale: " + intialParticleSystemScale);
     }
 
     private void Update()
@@ -44,7 +45,7 @@ public class FireManager : MonoBehaviour
         }
     }
 
-    private void UpdateFireAppearance()
+    private void UpdateFire()
     {
         fireLight.intensity = fireStrength * 100;
 
@@ -60,6 +61,8 @@ public class FireManager : MonoBehaviour
         }
 
         fireSystem.transform.localScale = intialParticleSystemScale * newScale;
+
+        fireAudio.volume = fireStrength;
     }
 
     public void ChangeFireStrength(float change)
@@ -69,7 +72,7 @@ public class FireManager : MonoBehaviour
 
         fireStrength = Mathf.Clamp01(fireStrength);
         //Debug.Log("FIRE STRENGTH:  " + fireStrength);
-        UpdateFireAppearance();
+        UpdateFire();
 
         currentFireTimer = 0f;
     }
