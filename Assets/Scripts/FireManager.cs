@@ -33,15 +33,26 @@ public class FireManager : MonoBehaviour
 
     private void Update()
     {
-        if (!FireRanOut())
+        if (!GameState.IsGamePaused())
         {
-            currentFireTimer += Time.deltaTime;
+            if(fireAudio.mute)
+                fireAudio.mute = false;
 
-            if (currentFireTimer >= FIRE_INTERVAL)
+            if (!FireRanOut())
             {
-                currentFireTimer -= FIRE_INTERVAL;
-                ChangeFireStrength(-0.2f);
+                currentFireTimer += Time.deltaTime;
+
+                if (currentFireTimer >= FIRE_INTERVAL)
+                {
+                    currentFireTimer -= FIRE_INTERVAL;
+                    ChangeFireStrength(-0.2f);
+                }
             }
+        }
+        else 
+        {
+            if (!fireAudio.mute)
+                fireAudio.mute = true;
         }
     }
 

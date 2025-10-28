@@ -63,70 +63,73 @@ public class PlankManager : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (context.interaction is PressInteraction)
+        if (!GameState.IsGamePaused())
         {
-            //Debug.Log("Pressed E");
-
-            if (raycastManager.LookingAtTag("Plank"))
+            if (context.interaction is PressInteraction)
             {
-                GetPlank();
-                uiManagerRef.UpdateHeldPlankNumber();
-            }
-            else if (raycastManager.LookingAtTag("Window") && heldPlanks < 3)
-            {
-                WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+                //Debug.Log("Pressed E");
 
-                if (!currentWindow.IsWindowBoarded())
+                if (raycastManager.LookingAtTag("Plank"))
                 {
-                    uiManagerRef.ShowNotEnoughPlanksText(2f);
+                    GetPlank();
+                    uiManagerRef.UpdateHeldPlankNumber();
                 }
-            }
-            else if (raycastManager.LookingAtTag("Fireplace") && heldPlanks < 1)
-            {
-                uiManagerRef.ShowNotEnoughPlanksText(2f);
-            }
-        }
-        else if (context.interaction is HoldInteraction)
-        {
-            //Debug.Log("Held E");
-
-            if (raycastManager.LookingAtTag("Window"))
-            {
-                WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
-                if (heldPlanks < 3)
+                else if (raycastManager.LookingAtTag("Window") && heldPlanks < 3)
                 {
+                    WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+
                     if (!currentWindow.IsWindowBoarded())
                     {
                         uiManagerRef.ShowNotEnoughPlanksText(2f);
                     }
                 }
-                else
+                else if (raycastManager.LookingAtTag("Fireplace") && heldPlanks < 1)
                 {
-                    //Debug.Log("Used 3 planks to board window");
-                    heldPlanks -= 3;
-                    uiManagerRef.UpdateHeldPlankNumber();
-
-                    // spawn planks around window logic
-                    if (currentWindow != null && !currentWindow.IsWindowBoarded())
-                    {
-                        currentWindow.BoardWindow();
-                    }
+                    uiManagerRef.ShowNotEnoughPlanksText(2f);
                 }
             }
-            else if (raycastManager.LookingAtTag("Fireplace"))
+            else if (context.interaction is HoldInteraction)
             {
-                if (heldPlanks < 1)
-                {
-                    uiManagerRef.ShowNotEnoughPlanksText();
-                }
-                else
-                {
-                    Debug.Log("Used 1 plank to extend fire");
-                    heldPlanks -= 1;
-                    uiManagerRef.UpdateHeldPlankNumber();
+                //Debug.Log("Held E");
 
-                    // use plank to extend fire logic
-                    fireManagerRef.ChangeFireStrength(0.4f);
+                if (raycastManager.LookingAtTag("Window"))
+                {
+                    WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+                    if (heldPlanks < 3)
+                    {
+                        if (!currentWindow.IsWindowBoarded())
+                        {
+                            uiManagerRef.ShowNotEnoughPlanksText(2f);
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("Used 3 planks to board window");
+                        heldPlanks -= 3;
+                        uiManagerRef.UpdateHeldPlankNumber();
+
+                        // spawn planks around window logic
+                        if (currentWindow != null && !currentWindow.IsWindowBoarded())
+                        {
+                            currentWindow.BoardWindow();
+                        }
+                    }
+                }
+                else if (raycastManager.LookingAtTag("Fireplace"))
+                {
+                    if (heldPlanks < 1)
+                    {
+                        uiManagerRef.ShowNotEnoughPlanksText();
+                    }
+                    else
+                    {
+                        Debug.Log("Used 1 plank to extend fire");
+                        heldPlanks -= 1;
+                        uiManagerRef.UpdateHeldPlankNumber();
+
+                        // use plank to extend fire logic
+                        fireManagerRef.ChangeFireStrength(0.4f);
+                    }
                 }
             }
         }

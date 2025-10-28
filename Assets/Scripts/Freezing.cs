@@ -39,28 +39,31 @@ public class Freezing : MonoBehaviour
 
     void Update()
     {
-        if (freezeMeter < 100)
+        if (!GameState.IsGamePaused())
         {
-            currentFreezeTimer += Time.deltaTime;
-        }
-
-        if (currentFreezeTimer >= FREEZE_INTERVAL)
-        {
-            currentFreezeTimer -= FREEZE_INTERVAL;
-
-            if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
+            if (freezeMeter < 100)
             {
-                freezeMeter += FREEZE_SPEED;
+                currentFreezeTimer += Time.deltaTime;
             }
-            else // warm up
+
+            if (currentFreezeTimer >= FREEZE_INTERVAL)
             {
-                if (freezeMeter > 0)
+                currentFreezeTimer -= FREEZE_INTERVAL;
+
+                if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
                 {
-                    freezeMeter -= (FREEZE_SPEED * 7);
+                    freezeMeter += FREEZE_SPEED;
                 }
-                else if (freezeMeter < 0)
+                else // warm up
                 {
-                    freezeMeter = 0;
+                    if (freezeMeter > 0)
+                    {
+                        freezeMeter -= (FREEZE_SPEED * 7);
+                    }
+                    else if (freezeMeter < 0)
+                    {
+                        freezeMeter = 0;
+                    }
                 }
             }
         }

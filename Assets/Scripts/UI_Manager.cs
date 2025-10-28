@@ -9,6 +9,8 @@ public class UI_Manager : MonoBehaviour
 {
     [Header("UI Objects")]
     [SerializeField]
+    private GameObject UI_Crosshair;
+    [SerializeField]
     private GameObject UI_PickupText;
     [SerializeField]
     private GameObject UI_BoardWindowText;
@@ -22,6 +24,9 @@ public class UI_Manager : MonoBehaviour
     private GameObject UI_ExtendFireText;
     [SerializeField]
     private RawImage UI_FreezeEffectImage;
+
+    [SerializeField]
+    private GameObject UI_PauseScreen;
 
     [Header("Script references")]
     [SerializeField]
@@ -52,15 +57,22 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
-        UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank"));
+        if (!GameState.IsGamePaused())
+        {
+            CalculateFreezeImageAlpha();
 
-        ManageWindowBoardingUI();
+            UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank") || raycastManagerReference.LookingAtTag("Lighter"));
 
-        UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
+            ManageWindowBoardingUI();
 
-        UI_TooHeavyText.SetActive(currentPlanks >= 5);
+            UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
 
-        CalculateFreezeImageAlpha();
+            UI_TooHeavyText.SetActive(currentPlanks >= 5);
+        }
+
+        // Pause
+        UI_PauseScreen.SetActive(GameState.IsGamePaused());
+        UI_Crosshair.SetActive(!GameState.IsGamePaused());
     }
 
     public void ShowNotEnoughPlanksText(float duration = 2f)

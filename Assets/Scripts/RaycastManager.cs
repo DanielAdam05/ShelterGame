@@ -13,7 +13,10 @@ public class RaycastManager : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * rayRange, Color.red);
+        if (!GameState.IsGamePaused())
+        {
+            //Debug.DrawRay(transform.position, transform.forward * rayRange, Color.red);
+        }
     }
 
     //public T LookingAtComponent<T>() where T : Component // template function
