@@ -138,4 +138,9 @@ public class PlayerMovement : MonoBehaviour
             verticalVelocity = 5f;
         }
     }
+
+    public bool IsMoving()
+    {
+        return moveSpeed >= 1e-5f;
+    }
 }
