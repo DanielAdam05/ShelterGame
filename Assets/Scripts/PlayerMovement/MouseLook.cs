@@ -20,26 +20,34 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     private InputActionReference rotationActionReference;
 
-
     // Non-assignable variables
     private Vector2 rotationInput;
     private float xRotation = 0f;
     private float yRotation = 0f;
 
-    private bool cameraLookingLocked;
+    //private Camera playerCamera;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        //playerCamera = gameObject.GetComponentInChildren<Camera>();
+        //if (playerCamera == null)
+        //{
+        //    Debug.LogError("No Camera component is found in children!");
+        //}
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        //playerCamera.enabled = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!GameState.IsGamePaused())
+        if (!GameState.IsGameLost())
         {
-            if (!cameraLookingLocked)
+            if (!GameState.IsGamePaused())
             {
                 rotationInput = rotationActionReference.action.ReadValue<Vector2>() * cameraSensitivity;
 
@@ -53,6 +61,10 @@ public class MouseLook : MonoBehaviour
                 // LEFT/RIGHT - rotate player root
                 playerRoot.localRotation = Quaternion.Euler(0f, yRotation, 0f);
             }
-        } 
+        }
+        else
+        {
+            //playerCamera.enabled = false;
+        }
     }
 }

@@ -7,6 +7,15 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
+    [Header("Major UI Parts")]
+    [SerializeField]
+    private GameObject PlayerUI;
+    [SerializeField]
+    private GameObject PauseScreen;
+    [SerializeField]
+    private GameObject GameOverScreen;
+
+
     [Header("UI Objects")]
     [SerializeField]
     private GameObject UI_Crosshair;
@@ -24,9 +33,6 @@ public class UI_Manager : MonoBehaviour
     private GameObject UI_ExtendFireText;
     [SerializeField]
     private RawImage UI_FreezeEffectImage;
-
-    [SerializeField]
-    private GameObject UI_PauseScreen;
 
     [Header("Script references")]
     [SerializeField]
@@ -53,26 +59,44 @@ public class UI_Manager : MonoBehaviour
         }
         
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
+
+        if (GameOverScreen.activeSelf)
+        {
+            GameOverScreen.SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (!GameState.IsGamePaused())
+        bool isGamePaused = GameState.IsGamePaused();
+
+        if (!GameState.IsGameLost())
         {
-            CalculateFreezeImageAlpha();
+            if (!isGamePaused)
+            {
+                UpdateFreezeImageAlpha();
 
-            UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank") || raycastManagerReference.LookingAtTag("Lighter"));
+                UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank") || raycastManagerReference.LookingAtTag("Lighter"));
 
-            ManageWindowBoardingUI();
+                ManageWindowBoardingUI();
 
-            UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
+                UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
 
-            UI_TooHeavyText.SetActive(currentPlanks >= 5);
+                UI_TooHeavyText.SetActive(currentPlanks >= 5);
+            }
+
+            // Pause
+            PauseScreen.SetActive(isGamePaused);
+            UI_Crosshair.SetActive(!isGamePaused);
         }
+        else
+        {
+            GameOverScreen.SetActive(true);
 
-        // Pause
-        UI_PauseScreen.SetActive(GameState.IsGamePaused());
-        UI_Crosshair.SetActive(!GameState.IsGamePaused());
+            PlayerUI.SetActive(false);
+
+            // if try again button is pressed -> call GameState.ResetScene()
+        } 
     }
 
     public void ShowNotEnoughPlanksText(float duration = 2f)
@@ -112,7 +136,7 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    private void CalculateFreezeImageAlpha()
+    private void UpdateFreezeImageAlpha()
     {
         Color color = UI_FreezeEffectImage.color;
         color.a = freezingReference.FreezeMeter() / 400f;

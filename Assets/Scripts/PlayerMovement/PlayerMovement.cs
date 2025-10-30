@@ -41,19 +41,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        initialSpeed = moveSpeed;
         if (characterController == null)
         {
             characterController = GetComponent<CharacterController>();
         }
     }
 
+    private void Start()
+    {
+        initialSpeed = moveSpeed;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (!GameState.IsGamePaused())
+        if (!GameState.IsGameLost())
         {
-            MovePlayer();
+            if (!GameState.IsGamePaused())
+            {
+                MovePlayer();
+            }
         }
     }
 

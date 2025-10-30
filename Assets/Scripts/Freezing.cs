@@ -43,36 +43,39 @@ public class Freezing : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGamePaused())
+        if (!GameState.IsGameLost())
         {
-            if (freezeMeter < 100)
+            if (!GameState.IsGamePaused())
             {
-                currentFreezeTimer += Time.deltaTime;
-            }
-
-            if (currentFreezeTimer >= FREEZE_INTERVAL)
-            {
-                currentFreezeTimer -= FREEZE_INTERVAL;
-
-                if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
+                if (freezeMeter < 100)
                 {
-                    if(coldBreathVFX.isPlaying == false)
-                        coldBreathVFX.Play();
-
-                    freezeMeter += FREEZE_SPEED;
+                    currentFreezeTimer += Time.deltaTime;
                 }
-                else // warm up
-                {
-                    if (coldBreathVFX.isPlaying == true)
-                        coldBreathVFX.Pause();
 
-                    if (freezeMeter > 0)
+                if (currentFreezeTimer >= FREEZE_INTERVAL)
+                {
+                    currentFreezeTimer -= FREEZE_INTERVAL;
+
+                    if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
                     {
-                        freezeMeter -= (FREEZE_SPEED * 7);
+                        if (coldBreathVFX.isPlaying == false)
+                            coldBreathVFX.Play();
+
+                        freezeMeter += FREEZE_SPEED;
                     }
-                    else if (freezeMeter < 0)
+                    else // warm up
                     {
-                        freezeMeter = 0;
+                        if (coldBreathVFX.isPlaying == true)
+                            coldBreathVFX.Pause();
+
+                        if (freezeMeter > 0)
+                        {
+                            freezeMeter -= (FREEZE_SPEED * 7);
+                        }
+                        else if (freezeMeter < 0)
+                        {
+                            freezeMeter = 0;
+                        }
                     }
                 }
             }

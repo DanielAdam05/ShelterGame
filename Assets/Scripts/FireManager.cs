@@ -33,27 +33,47 @@ public class FireManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameState.IsGamePaused())
+        if (!GameState.IsGameLost())
         {
-            if(fireAudio.mute)
-                fireAudio.mute = false;
-
-            if (!FireRanOut())
+            if (!GameState.IsGamePaused())
             {
-                currentFireTimer += Time.deltaTime;
+                if (fireAudio.mute)
+                    fireAudio.mute = false;
 
-                if (currentFireTimer >= FIRE_INTERVAL)
+                if (!FireRanOut())
                 {
-                    currentFireTimer -= FIRE_INTERVAL;
-                    ChangeFireStrength(-0.2f);
+                    currentFireTimer += Time.deltaTime;
+
+                    if (currentFireTimer >= FIRE_INTERVAL)
+                    {
+                        currentFireTimer -= FIRE_INTERVAL;
+                        ChangeFireStrength(-0.2f);
+                    }
                 }
             }
+            else
+            {
+                if (!fireAudio.mute)
+                    fireAudio.mute = true;
+            }
         }
-        else 
+        else
         {
             if (!fireAudio.mute)
                 fireAudio.mute = true;
         }
+    }
+
+    public void ChangeFireStrength(float change)
+    {
+        fireStrength += change;
+        //Debug.Log("Fire strength change is: " + change);
+
+        fireStrength = Mathf.Clamp01(fireStrength);
+        //Debug.Log("FIRE STRENGTH:  " + fireStrength);
+        UpdateFire();
+
+        currentFireTimer = 0f;
     }
 
     private void UpdateFire()
@@ -74,18 +94,6 @@ public class FireManager : MonoBehaviour
         fireSystem.transform.localScale = intialParticleSystemScale * newScale;
 
         fireAudio.volume = fireStrength;
-    }
-
-    public void ChangeFireStrength(float change)
-    {
-        fireStrength += change;
-        //Debug.Log("Fire strength change is: " + change);
-
-        fireStrength = Mathf.Clamp01(fireStrength);
-        //Debug.Log("FIRE STRENGTH:  " + fireStrength);
-        UpdateFire();
-
-        currentFireTimer = 0f;
     }
 
     public bool FireRanOut()
