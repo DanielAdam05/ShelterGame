@@ -10,7 +10,8 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     private Vector2 cameraClampRangeX = new(-90f, 60f); // vertical
 
-    [Header("Player Root")]
+    [Header("Roots")]
+    [Tooltip("Player Root for syncing rotation with player itself")]
     [SerializeField]
     private Transform playerRoot;
 
@@ -42,13 +43,13 @@ public class MouseLook : MonoBehaviour
             {
                 rotationInput = rotationActionReference.action.ReadValue<Vector2>() * cameraSensitivity;
 
-                xRotation -= rotationInput.y;
+                xRotation += rotationInput.y;
                 xRotation = Mathf.Clamp(xRotation, cameraClampRangeX.x, cameraClampRangeX.y);
 
                 yRotation += rotationInput.x;
 
                 // UP/DOWN - rotate camera 
-                transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+                transform.localRotation = Quaternion.Euler(-xRotation, 0f, 0f);
                 // LEFT/RIGHT - rotate player root
                 playerRoot.localRotation = Quaternion.Euler(0f, yRotation, 0f);
             }

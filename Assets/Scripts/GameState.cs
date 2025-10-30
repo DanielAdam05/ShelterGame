@@ -42,7 +42,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            if (Time.timeScale!=1f)
+            if (Time.timeScale != 1f)
                 Time.timeScale = 1f;
         } 
     }

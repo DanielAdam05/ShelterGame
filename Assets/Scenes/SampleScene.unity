@@ -5588,7 +5588,6 @@ GameObject:
   - component: {fileID: 303596254}
   - component: {fileID: 303596253}
   - component: {fileID: 303596252}
-  - component: {fileID: 303596255}
   - component: {fileID: 303596256}
   m_Layer: 2
   m_Name: PlayerCamera
@@ -5605,13 +5604,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303596250}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02705439, y: 0.995872, z: -0.08664311, w: -0.0000004842878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 351412496}
   m_Father: {fileID: 1973629603}
-  m_LocalEulerAnglesHint: {x: 9.937, y: 180.273, z: 3.136}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303596252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5715,22 +5715,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &303596255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303596250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a61bd62a1933a47870602ce75fcfae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraSensitivity: 0.2
-  cameraClampRangeX: {x: -90, y: 75}
-  playerRoot: {fileID: 1220078566}
-  rotationActionReference: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &303596256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10810,6 +10794,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327708557}
   m_Mesh: {fileID: -8552080446553261713, guid: 8bb1ce573d002864fa732523ed29e19b, type: 3}
+--- !u!4 &351412496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+  m_PrefabInstance: {fileID: 1046762271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &404230740
 GameObject:
   m_ObjectHideFlags: 0
@@ -13117,6 +13106,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseAction: {fileID: -4680297850392148619, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   windSound: {fileID: 307947123}
+--- !u!1001 &1046762271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 303596251}
+    m_Modifications:
+    - target: {fileID: 1273915125232972, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_Name
+      value: SmokeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508696319873668, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73767e07adddc394d82b994801f89bbb, type: 3}
 --- !u!1 &1071266134
 GameObject:
   m_ObjectHideFlags: 0
@@ -14560,7 +14606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220078562}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.12627825, z: -0, w: 0.99199486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.674, y: 1.229, z: -5.857}
   m_LocalScale: {x: 0.8, y: 0.75, z: 0.8}
   m_ConstrainProportionsScale: 0
@@ -14568,7 +14614,7 @@ Transform:
   - {fileID: 1973629603}
   - {fileID: 166296534}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 14.509, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1220078567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16493,6 +16539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1973629603}
+  - component: {fileID: 1973629604}
   m_Layer: 2
   m_Name: CameraPivot
   m_TagString: Untagged
@@ -16516,6 +16563,22 @@ Transform:
   - {fileID: 303596251}
   m_Father: {fileID: 1220078566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973629604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973629602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a61bd62a1933a47870602ce75fcfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSensitivity: 0.2
+  cameraClampRangeX: {x: -90, y: 75}
+  playerRoot: {fileID: 1220078566}
+  rotationActionReference: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &2018011190
 GameObject:
   m_ObjectHideFlags: 0
