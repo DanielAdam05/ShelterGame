@@ -15,9 +15,13 @@ public class Freezing : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
 
-    [Tooltip("Collider of area where freezing does not occur")]
+    [Header("Collider of area where freezing does not occur")]
     [SerializeField]
     private BoxCollider warmRoomCollider;
+
+    [Space(10)]
+    [SerializeField]
+    private ParticleSystem coldBreathVFX;
 
     // Non-assignable variables
     private float currentFreezeTimer;
@@ -52,10 +56,16 @@ public class Freezing : MonoBehaviour
 
                 if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
                 {
+                    if(coldBreathVFX.isPlaying == false)
+                        coldBreathVFX.Play();
+
                     freezeMeter += FREEZE_SPEED;
                 }
                 else // warm up
                 {
+                    if (coldBreathVFX.isPlaying == true)
+                        coldBreathVFX.Pause();
+
                     if (freezeMeter > 0)
                     {
                         freezeMeter -= (FREEZE_SPEED * 7);
