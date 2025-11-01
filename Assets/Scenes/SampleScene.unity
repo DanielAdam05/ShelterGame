@@ -434,9 +434,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 9e57a8ea8b9a31447a6d326f83186430, type: 3}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5483,9 +5491,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 9e57a8ea8b9a31447a6d326f83186430, type: 3}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5547,6 +5563,14 @@ PrefabInstance:
     - target: {fileID: 2597527068340736770, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11664,6 +11688,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11725,6 +11757,14 @@ PrefabInstance:
     - target: {fileID: 2597527068340736770, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12081,9 +12121,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 9e57a8ea8b9a31447a6d326f83186430, type: 3}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15597,8 +15645,8 @@ MonoBehaviour:
   - {fileID: 648007008}
   - {fileID: 675697866}
   - {fileID: 973834073815288388}
-  minCooldown: 15
-  maxCooldown: 25
+  minCooldown: 10
+  maxCooldown: 10
   currentKnockCooldown: 0
 --- !u!1 &1594247718
 GameObject:
@@ -15839,6 +15887,14 @@ PrefabInstance:
     - target: {fileID: 2597527068340736770, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25465,9 +25521,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 52d702ed73f733f43a18e6b27f6ccb58, type: 3}
+    - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30057,7 +30121,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973834073815288388}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -30072,7 +30136,7 @@ AudioSource:
   Priority: 0
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

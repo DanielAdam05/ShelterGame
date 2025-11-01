@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WindowClass : MonoBehaviour
@@ -41,11 +43,21 @@ public class WindowClass : MonoBehaviour
 
     public void KnockOnWindow()
     {
-        knockSFX.Play();
+        knockSFX.enabled = true;
+        //knockSFX.Play();
+        StartCoroutine(DisableSoundAfterPlaying());
     }
 
     public bool IsWindowBoarded()
     {
         return boardedWindow;
+    }
+
+    private IEnumerator DisableSoundAfterPlaying()
+    {
+        //Debug.Log("Knock SFX clip length is: " + knockSFX.clip.length);
+        yield return new WaitForSeconds(knockSFX.clip.length);
+        knockSFX.enabled = false;
+        //Debug.Log("Disabled sound");
     }
 }

@@ -66,8 +66,7 @@ public class WindowManager : MonoBehaviour
 
                 // Choose random window
                 randomWindowIdx = Random.Range(0, unboardedWindowsListSize - 1);
-                //unboardedWindows[randomWindowIdx].KnockOnWindow();
-                unboardedWindows[7].KnockOnWindow();
+                unboardedWindows[randomWindowIdx].KnockOnWindow();
                 Debug.Log("Knocked on window " + randomWindowIdx);
 
                 // Change random cooldown
