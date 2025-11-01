@@ -15,7 +15,9 @@ public class WindowManager : MonoBehaviour
     [SerializeField]
     private float minCooldown = 15f;
     [SerializeField]
-    private float maxCooldown = 25f;
+    private float maxCooldown = 30f;
+    [SerializeField]
+    private float initalCooldown = 45f;
 
     [Space(10)]
     [SerializeField]
@@ -51,7 +53,7 @@ public class WindowManager : MonoBehaviour
 
     void Start()
     {
-        currentKnockCooldown = minCooldown;
+        currentKnockCooldown = initalCooldown;
     }
 
     void Update()

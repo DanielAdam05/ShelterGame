@@ -66,7 +66,8 @@ public class Freezing : MonoBehaviour
                     else // warm up
                     {
                         if (coldBreathVFX.isPlaying == true)
-                            coldBreathVFX.Pause();
+                            coldBreathVFX.Stop();
+               
 
                         if (freezeMeter > 0)
                         {

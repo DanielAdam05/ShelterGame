@@ -15645,8 +15645,9 @@ MonoBehaviour:
   - {fileID: 648007008}
   - {fileID: 675697866}
   - {fileID: 973834073815288388}
-  minCooldown: 10
-  maxCooldown: 10
+  minCooldown: 15
+  maxCooldown: 30
+  initalCooldown: 45
   currentKnockCooldown: 0
 --- !u!1 &1594247718
 GameObject:
@@ -30288,7 +30289,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
