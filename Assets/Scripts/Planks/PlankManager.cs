@@ -23,6 +23,8 @@ public class PlankManager : MonoBehaviour
     [Header("Script references")]
     [SerializeField]
     private RaycastManager raycastManager;
+    [SerializeField]
+    private WindowManager windowManager;
 
     // Non-assignable variables
     private UI_Manager uiManagerRef;
@@ -121,6 +123,7 @@ public class PlankManager : MonoBehaviour
                         if (currentWindow != null && !currentWindow.IsWindowBoarded())
                         {
                             currentWindow.BoardWindow();
+                            windowManager.UpdateBoardedWindows(); // update the uboarded windows list
                         }
                     }
                 }
@@ -144,6 +147,7 @@ public class PlankManager : MonoBehaviour
                         if (currentWindow != null && !currentWindow.IsWindowBoarded())
                         {
                             currentWindow.BoardWindow();
+                            windowManager.UpdateBoardedWindows(); // update the uboarded windows list
                         }
                     }
                 }

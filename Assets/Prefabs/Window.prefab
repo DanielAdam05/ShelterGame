@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2597527068340736770}
   - component: {fileID: 3025961558589720187}
   - component: {fileID: 8097612836790261266}
+  - component: {fileID: 8079000030638223196}
   m_Layer: 7
   m_Name: Window
   m_TagString: Window
@@ -69,6 +70,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardedPlanks: {fileID: 3372782735678851907}
   boardedWindow: 0
+--- !u!82 &8079000030638223196
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973834073792873920}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: c5a02721c0b1bc946a1ca6137872dd7f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3372782735678851907
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,23 +227,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.231
+      value: 0.255
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7458164
+      value: 0.74464536
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.076261
+      value: -0.06259342
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04890113
+      value: -0.0643178
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.6599628
+      value: -0.661399
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -153,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.614
+      value: -0.756
       objectReference: {fileID: 0}
     - target: {fileID: 3953905623269082409, guid: cc5bb7244a272424f81f78f1b3829cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

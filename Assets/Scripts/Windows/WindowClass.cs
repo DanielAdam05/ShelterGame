@@ -2,12 +2,20 @@ using UnityEngine;
 
 public class WindowClass : MonoBehaviour
 {
+    [Header("Window Members")]
     [SerializeField]
     private GameObject boardedPlanks;
 
     // Non-assignable variables
     public bool boardedWindow;
-    
+
+    private AudioSource knockSFX;
+
+    private void Awake()
+    {
+        knockSFX = gameObject.GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         boardedWindow = false;
@@ -30,6 +38,11 @@ public class WindowClass : MonoBehaviour
     //    boardedWindow = false;
     //    boardedPlanks.SetActive(false);
     //}
+
+    public void KnockOnWindow()
+    {
+        knockSFX.Play();
+    }
 
     public bool IsWindowBoarded()
     {
