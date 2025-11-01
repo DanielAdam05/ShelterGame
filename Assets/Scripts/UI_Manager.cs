@@ -120,7 +120,7 @@ public class UI_Manager : MonoBehaviour
 
     private void ManageWindowBoardingUI()
     {
-        if (raycastManagerReference.LookingAtTag("Window"))
+        if (raycastManagerReference.LookingAtTag("Window") || raycastManagerReference.LookingAtTag("SmallWindow"))
         {
             WindowClass currentWindow = raycastManagerReference.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
 

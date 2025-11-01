@@ -83,6 +83,15 @@ public class PlankManager : MonoBehaviour
                         uiManagerRef.ShowNotEnoughPlanksText(2f);
                     }
                 }
+                else if (raycastManager.LookingAtTag("SmallWindow") && heldPlanks < 2)
+                {
+                    WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+
+                    if (!currentWindow.IsWindowBoarded())
+                    {
+                        uiManagerRef.ShowNotEnoughPlanksText(2f);
+                    }
+                }
                 else if (raycastManager.LookingAtTag("Fireplace") && heldPlanks < 1)
                 {
                     uiManagerRef.ShowNotEnoughPlanksText(2f);
@@ -106,6 +115,29 @@ public class PlankManager : MonoBehaviour
                     {
                         //Debug.Log("Used 3 planks to board window");
                         heldPlanks -= 3;
+                        uiManagerRef.UpdateHeldPlankNumber();
+
+                        // spawn planks around window logic
+                        if (currentWindow != null && !currentWindow.IsWindowBoarded())
+                        {
+                            currentWindow.BoardWindow();
+                        }
+                    }
+                }
+                else if (raycastManager.LookingAtTag("SmallWindow"))
+                {
+                    WindowClass currentWindow = raycastManager.GetHitRecord().collider.gameObject.GetComponent<WindowClass>();
+                    if (heldPlanks < 2)
+                    {
+                        if (!currentWindow.IsWindowBoarded())
+                        {
+                            uiManagerRef.ShowNotEnoughPlanksText(2f);
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("Used 2 planks to board window");
+                        heldPlanks -= 2;
                         uiManagerRef.UpdateHeldPlankNumber();
 
                         // spawn planks around window logic

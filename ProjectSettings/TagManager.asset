@@ -8,6 +8,7 @@ TagManager:
   - Window
   - Fireplace
   - Lighter
+  - SmallWindow
   layers:
   - Default
   - TransparentFX

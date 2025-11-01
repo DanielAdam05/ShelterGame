@@ -25,11 +25,11 @@ public class WindowClass : MonoBehaviour
         boardedPlanks.SetActive(true);
     }
 
-    public void BreakWindow()
-    {
-        boardedWindow = false;
-        boardedPlanks.SetActive(false);
-    }
+    //public void BreakWindow()
+    //{
+    //    boardedWindow = false;
+    //    boardedPlanks.SetActive(false);
+    //}
 
     public bool IsWindowBoarded()
     {
