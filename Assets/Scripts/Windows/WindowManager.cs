@@ -28,10 +28,9 @@ public class WindowManager : MonoBehaviour
     private readonly List<WindowClass> unboardedWindows = new();
     private int unboardedWindowsListSize;
 
-    private float knockingTimer;
+    private float knockTimer;
 
     private int randomWindowIdx;
-
 
     private void Awake()
     {
@@ -60,11 +59,11 @@ public class WindowManager : MonoBehaviour
     {
         if (!GameState.IsGameLost() && !GameState.IsGamePaused())
         {
-            knockingTimer += Time.deltaTime;
+            knockTimer += Time.deltaTime;
 
-            if (knockingTimer >= currentKnockCooldown)
+            if (knockTimer >= currentKnockCooldown)
             {
-                knockingTimer -= currentKnockCooldown;
+                knockTimer -= currentKnockCooldown;
 
                 // Choose random window
                 randomWindowIdx = Random.Range(0, unboardedWindowsListSize - 1);

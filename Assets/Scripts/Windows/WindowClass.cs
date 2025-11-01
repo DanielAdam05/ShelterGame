@@ -8,18 +8,32 @@ public class WindowClass : MonoBehaviour
     [SerializeField]
     private GameObject boardedPlanks;
 
+    [SerializeField]
+    private Material shadowCreatureMaterial;
+
     // Non-assignable variables
     public bool boardedWindow;
 
     private AudioSource knockSFX;
+    private GameObject shadowCreature;
+
+    private const float FADEOUT_DURATION = 1f;
+   
 
     private void Awake()
     {
         knockSFX = gameObject.GetComponent<AudioSource>();
+        shadowCreature = gameObject.transform.Find("Shadow").gameObject;
+
+        if (shadowCreature == null)
+        {
+            Debug.LogError("Couldn't find Shadow child in Window gameobject");
+        }
     }
 
     void Start()
     {
+        shadowCreature.SetActive(false);
         boardedWindow = false;
     }
 
@@ -33,6 +47,8 @@ public class WindowClass : MonoBehaviour
     {
         boardedWindow = true;
         boardedPlanks.SetActive(true);
+
+        shadowCreature.SetActive(false);
     }
 
     //public void BreakWindow()
@@ -44,6 +60,7 @@ public class WindowClass : MonoBehaviour
     public void KnockOnWindow()
     {
         knockSFX.enabled = true;
+        shadowCreature.SetActive(true);
         //knockSFX.Play();
         StartCoroutine(DisableSoundAfterPlaying());
     }
@@ -60,4 +77,26 @@ public class WindowClass : MonoBehaviour
         knockSFX.enabled = false;
         //Debug.Log("Disabled sound");
     }
+
+    //private IEnumerator FadeShadowOut()
+    //{
+    //    Color color = shadowCreatureMaterial.color;
+    //    float startAlpha = color.a;
+
+    //    float duration = 1f; // 1 second
+    //    float elapsedSec = 0f;
+
+    //    while (elapsedSec < duration)
+    //    {
+    //        elapsedSec += Time.deltaTime;
+    //        float alpha = Mathf.Lerp(startAlpha, 0f, elapsedSec / duration);
+    //        color.a = alpha;
+    //        shadowCreatureMaterial.color = color;
+    //        yield return null; // wait for next frame
+    //    }
+
+    //    // Ensure alpha is set to 0 at the end
+    //    color.a = 0f;
+    //    shadowCreatureMaterial.color = color;
+    //}
 }
