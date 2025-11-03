@@ -445,6 +445,26 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5502,6 +5522,26 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5571,6 +5611,26 @@ PrefabInstance:
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: MaxDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6045,7 +6105,7 @@ MonoBehaviour:
   rayRange: 2
   interactableLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!1 &307947120
 GameObject:
   m_ObjectHideFlags: 0
@@ -11131,7 +11191,7 @@ GameObject:
   - component: {fileID: 404230744}
   - component: {fileID: 404230743}
   - component: {fileID: 404230742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11696,6 +11756,26 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11765,6 +11845,26 @@ PrefabInstance:
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: MaxDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12081,6 +12181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1559504630}
     m_Modifications:
+    - target: {fileID: 968131433647725338, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 973834073792873920, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Name
       value: Window (2)
@@ -12136,6 +12240,26 @@ PrefabInstance:
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: MaxDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13587,7 +13711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireStrength: 1
-  FIRE_INTERVAL: 15
+  FIRE_INTERVAL: 20
   fireLight: {fileID: 1193902559}
   fireSystem: {fileID: 7317291032939009786}
   fireAudio: {fileID: 1710667390}
@@ -15472,6 +15596,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390505452}
   m_Mesh: {fileID: -985806669528924073, guid: ff5e84c36158cc44b8e2130fd3cb7b42, type: 3}
+--- !u!1 &1470224711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470224713}
+  - component: {fileID: 1470224712}
+  m_Layer: 6
+  m_Name: SnowCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1470224712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470224711}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 4, z: 8.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1470224713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470224711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.11, y: 2.037, z: -4.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524161161
 GameObject:
   m_ObjectHideFlags: 0
@@ -15597,7 +15774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559504630}
   - component: {fileID: 1559504631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15652,7 +15829,7 @@ MonoBehaviour:
   - {fileID: 973834073815288388}
   minCooldown: 25
   maxCooldown: 40
-  initalCooldown: 45
+  initalCooldown: 30
   currentKnockCooldown: 0
 --- !u!1 &1594247718
 GameObject:
@@ -15901,6 +16078,26 @@ PrefabInstance:
     - target: {fileID: 8079000030638223196, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: MaxDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16228,7 +16425,7 @@ GameObject:
   - component: {fileID: 1715295179}
   - component: {fileID: 1714163979}
   - component: {fileID: 1718526315}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_knob02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16247,7 +16444,7 @@ GameObject:
   - component: {fileID: 1715295183}
   - component: {fileID: 1714163983}
   - component: {fileID: 1718526319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_hinges01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16266,7 +16463,7 @@ GameObject:
   - component: {fileID: 1715295177}
   - component: {fileID: 1714163977}
   - component: {fileID: 1718526313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: door_knob01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16282,7 +16479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711870957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16301,7 +16498,7 @@ GameObject:
   - component: {fileID: 1715295181}
   - component: {fileID: 1714163981}
   - component: {fileID: 1718526317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16641,7 +16838,7 @@ GameObject:
   - component: {fileID: 1730377171}
   - component: {fileID: 1730377170}
   - component: {fileID: 1730377169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19261,7 +19458,7 @@ GameObject:
   - component: {fileID: 746703165882542512}
   - component: {fileID: 746703165882542513}
   - component: {fileID: 746703165882542514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20833,7 +21030,7 @@ GameObject:
   - component: {fileID: 1390490001077931256}
   - component: {fileID: 1390490001076833848}
   - component: {fileID: 1390490001072488024}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Room05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20852,7 +21049,7 @@ GameObject:
   - component: {fileID: 1390490001077931258}
   - component: {fileID: 1390490001076833850}
   - component: {fileID: 1390490001072488026}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Room08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20871,7 +21068,7 @@ GameObject:
   - component: {fileID: 1390490001077931260}
   - component: {fileID: 1390490001076833852}
   - component: {fileID: 1390490001072488028}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Room01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20890,7 +21087,7 @@ GameObject:
   - component: {fileID: 1390490001077931262}
   - component: {fileID: 1390490001076833854}
   - component: {fileID: 1390490001072488030}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Room02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20908,7 +21105,7 @@ GameObject:
   - component: {fileID: 1390490001075064040}
   - component: {fileID: 1390490001077931142}
   - component: {fileID: 1390490001076833990}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20926,7 +21123,7 @@ GameObject:
   - component: {fileID: 1390490001075064042}
   - component: {fileID: 1390490001077931136}
   - component: {fileID: 1390490001076833984}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20945,7 +21142,7 @@ GameObject:
   - component: {fileID: 1390490001077931140}
   - component: {fileID: 1390490001076833988}
   - component: {fileID: 1390490001072488036}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Room09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20964,7 +21161,7 @@ GameObject:
   - component: {fileID: 1390490001077931138}
   - component: {fileID: 1390490001076833986}
   - component: {fileID: 1390490001072488034}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: windowsCeiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20980,7 +21177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064052}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20996,7 +21193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064054}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: WindowsCeiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21015,7 +21212,7 @@ GameObject:
   - component: {fileID: 1390490001077931146}
   - component: {fileID: 1390490001076833994}
   - component: {fileID: 1390490001072488042}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21034,7 +21231,7 @@ GameObject:
   - component: {fileID: 1390490001077931156}
   - component: {fileID: 1390490001076834004}
   - component: {fileID: 1390490001072488052}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21053,7 +21250,7 @@ GameObject:
   - component: {fileID: 1390490001077931150}
   - component: {fileID: 1390490001076833998}
   - component: {fileID: 1390490001072488046}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21072,7 +21269,7 @@ GameObject:
   - component: {fileID: 1390490001077931144}
   - component: {fileID: 1390490001076833992}
   - component: {fileID: 1390490001072488040}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21091,7 +21288,7 @@ GameObject:
   - component: {fileID: 1390490001077931158}
   - component: {fileID: 1390490001076834006}
   - component: {fileID: 1390490001072488054}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21110,7 +21307,7 @@ GameObject:
   - component: {fileID: 1390490001077931232}
   - component: {fileID: 1390490001076833824}
   - component: {fileID: 1390490001072488000}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21126,7 +21323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064004}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21145,7 +21342,7 @@ GameObject:
   - component: {fileID: 1390490001077931238}
   - component: {fileID: 1390490001076833830}
   - component: {fileID: 1390490001072488006}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: door_frames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21164,7 +21361,7 @@ GameObject:
   - component: {fileID: 1390490001077931240}
   - component: {fileID: 1390490001076833832}
   - component: {fileID: 1390490001072488008}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: hallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21183,7 +21380,7 @@ GameObject:
   - component: {fileID: 1390490001077931242}
   - component: {fileID: 1390490001076833834}
   - component: {fileID: 1390490001072488010}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: heating_stove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21199,7 +21396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064016}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: mainOutdoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21218,7 +21415,7 @@ GameObject:
   - component: {fileID: 1390490001077931252}
   - component: {fileID: 1390490001076833844}
   - component: {fileID: 1390490001072488020}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: mainHouse01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21235,7 +21432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1390490001075064020}
   - component: {fileID: 1390490001075064021}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21251,7 +21448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064022}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21270,7 +21467,7 @@ GameObject:
   - component: {fileID: 1390490001077931248}
   - component: {fileID: 1390490001076833840}
   - component: {fileID: 1390490001072488016}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: q10:Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21289,7 +21486,7 @@ GameObject:
   - component: {fileID: 1390490001077931250}
   - component: {fileID: 1390490001076833842}
   - component: {fileID: 1390490001072488018}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: q9:Mesh1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21305,7 +21502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390490001075064028}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: mainIndoor01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21324,7 +21521,7 @@ GameObject:
   - component: {fileID: 1390490001077931254}
   - component: {fileID: 1390490001076833846}
   - component: {fileID: 1390490001072488022}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: plitus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25482,6 +25679,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1559504630}
     m_Modifications:
+    - target: {fileID: 968131433647725338, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 973834073792873920, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: m_Name
       value: Window
@@ -25539,9 +25740,29 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 303596254}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: gameplayRenderTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: shadowCreatureMaterial
       value: 
       objectReference: {fileID: 2100000, guid: ca86d7ba9f4ee614db034c860a7d508a, type: 2}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightLayerMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: enemyLineOfSightLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: lineOfSightExclusionLayer.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30194,7 +30415,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardedPlanks: {fileID: 3372782735696544967}
   shadowCreatureMaterial: {fileID: 2100000, guid: ca86d7ba9f4ee614db034c860a7d508a, type: 2}
+  playerCamera: {fileID: 303596254}
+  gameplayRenderTexture: {fileID: 8400000, guid: 6da09dc188ae0de4980e405c82d75ce0, type: 2}
+  lineOfSightLayerMask:
+    serializedVersion: 2
+    m_Bits: 119
   boardedWindow: 0
+  lineOfSightClear: 0
 --- !u!82 &8097612836780431767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30369,7 +30596,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -31153,3 +31380,4 @@ SceneRoots:
   - {fileID: 1559504630}
   - {fileID: 915021804}
   - {fileID: 1786539368}
+  - {fileID: 1470224713}

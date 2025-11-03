@@ -11,14 +11,35 @@ public class WindowClass : MonoBehaviour
     [SerializeField]
     private Material shadowCreatureMaterial;
 
+    [Header("Player Camera")]
+    [SerializeField]
+    private Camera playerCamera;
+    [Header("Render Texture for screen size!")]
+    [Tooltip("Screen size scales with the render texture")]
+    [SerializeField]
+    private RenderTexture gameplayRenderTexture;
+
+    [Header("Enemy Raycast Layermask")]
+    [SerializeField]
+    private LayerMask lineOfSightLayerMask;
+
+    [Space(10)]
     // Non-assignable variables
     public bool boardedWindow;
 
     private AudioSource knockSFX;
     private GameObject shadowCreature;
+    private Vector3 offsetShadowWorldPositon;
 
-    private const float FADEOUT_DURATION = 1f;
-   
+    //private const float FADEOUT_DURATION = 1f;
+
+    private Vector3 shadowScreenPos;
+    [SerializeField]
+    private bool lineOfSightClear;
+
+    private int screenWidth;
+    private int screenHeight;
+    
 
     private void Awake()
     {
@@ -35,12 +56,52 @@ public class WindowClass : MonoBehaviour
     {
         shadowCreature.SetActive(false);
         boardedWindow = false;
+
+        offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
+        shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
+
+        screenWidth = gameplayRenderTexture.width;
+        screenHeight = gameplayRenderTexture.height;
+        Debug.Log("Screen size: [" + screenWidth + ", " + screenHeight + "]");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!GameState.IsGameLost() && !GameState.IsGamePaused())
+        {
+            if (shadowCreature.activeSelf)
+            {
+                offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
+                shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
+
+                //Debug.Log(shadowScreenPos);
+
+                if (EnemyOnScreen(screenWidth, screenHeight))
+                {
+                    Debug.Log("Enemy on screen!");
+                }
+            }
+        }
+    }
+
+    private bool EnemyOnScreen(float screenWidth, float screenHeight)
+    {
+        Vector3 enemyToPlayerVector = offsetShadowWorldPositon - playerCamera.transform.position;
+
+        if (Physics.Raycast(playerCamera.transform.position, enemyToPlayerVector.normalized, out RaycastHit hit, enemyToPlayerVector.magnitude, lineOfSightLayerMask))
+        {
+            lineOfSightClear = false;
+        }
+        else
+        {
+            lineOfSightClear = true;
+        }
+
+        return (shadowScreenPos.x > 0 && shadowScreenPos.x <= screenWidth) &&
+                (shadowScreenPos.y > 0 && shadowScreenPos.y <= screenHeight) &&
+                shadowScreenPos.z >= 0 &&
+                lineOfSightClear;
     }
 
     public void BoardWindow()

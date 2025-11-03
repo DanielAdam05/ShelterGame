@@ -71,6 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardedPlanks: {fileID: 3372782735678851907}
   shadowCreatureMaterial: {fileID: 2100000, guid: ca86d7ba9f4ee614db034c860a7d508a, type: 2}
+  playerCamera: {fileID: 0}
+  gameplayRenderTexture: {fileID: 0}
+  lineOfSightLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   boardedWindow: 0
 --- !u!82 &8079000030638223196
 AudioSource:
@@ -295,6 +300,10 @@ PrefabInstance:
       value: Shadow
       objectReference: {fileID: 0}
     - target: {fileID: 1224058503883863683, guid: f19562c29adc24542817ea4deb0b96bf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224058503883863683, guid: f19562c29adc24542817ea4deb0b96bf, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -308,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3880921083038073693, guid: f19562c29adc24542817ea4deb0b96bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.059
+      value: -0.334
       objectReference: {fileID: 0}
     - target: {fileID: 3880921083038073693, guid: f19562c29adc24542817ea4deb0b96bf, type: 3}
       propertyPath: m_LocalRotation.w
