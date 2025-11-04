@@ -25,22 +25,9 @@ public class MouseLook : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
-    //private Camera playerCamera;
-
-    private void Awake()
-    {
-        //playerCamera = gameObject.GetComponentInChildren<Camera>();
-        //if (playerCamera == null)
-        //{
-        //    Debug.LogError("No Camera component is found in children!");
-        //}
-    }
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-
-        //playerCamera.enabled = true;
     }
 
     void Update()
@@ -61,10 +48,6 @@ public class MouseLook : MonoBehaviour
                 // LEFT/RIGHT - rotate player root
                 playerRoot.localRotation = Quaternion.Euler(0f, yRotation, 0f);
             }
-        }
-        else
-        {
-            //playerCamera.enabled = false;
         }
     }
 }

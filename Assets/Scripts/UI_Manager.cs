@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class UI_Manager : MonoBehaviour
     private GameObject UI_ExtendFireText;
     [SerializeField]
     private RawImage UI_FreezeEffectImage;
+    [SerializeField]
+    private GameObject UI_FeelSafeText;
 
     [Header("Script references")]
     [SerializeField]
@@ -43,12 +46,18 @@ public class UI_Manager : MonoBehaviour
     // Non-assignable variables
     private PlankManager plankManager;
     int currentPlanks;
+    private TextMeshProUGUI feelSafeTextMeshProUGUI;
 
     private void Awake()
     {
         if (plankManager == null)
         {
             plankManager = gameObject.GetComponent<PlankManager>();
+        }
+
+        if (UI_FeelSafeText != null)
+        {
+            feelSafeTextMeshProUGUI = UI_FeelSafeText.GetComponent<TextMeshProUGUI>();
         }
     }
     void Start()
@@ -142,5 +151,25 @@ public class UI_Manager : MonoBehaviour
         color.a = freezingReference.FreezeMeter() / 400f;
 
         UI_FreezeEffectImage.color = color;
+    }
+
+    public IEnumerator PlayYouFeelSafeText(float duration = 1.5f)
+    {
+        UI_FeelSafeText.SetActive(true);
+
+        Color originalColor = new(feelSafeTextMeshProUGUI.color.r, feelSafeTextMeshProUGUI.color.g, feelSafeTextMeshProUGUI.color.b, 1f);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            feelSafeTextMeshProUGUI.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        // Ensure alpha is exactly zero at end
+        feelSafeTextMeshProUGUI.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        UI_FeelSafeText.SetActive(false);
     }
 }

@@ -25,7 +25,10 @@ public class WindowClass : MonoBehaviour
 
     [Space(10)]
     // Non-assignable variables
-    public bool boardedWindow;
+    [SerializeField]
+    private bool boardedWindow;
+    [SerializeField]
+    private bool dangerousWindow;
 
     private AudioSource knockSFX;
     private GameObject shadowCreature;
@@ -34,12 +37,10 @@ public class WindowClass : MonoBehaviour
     //private const float FADEOUT_DURATION = 1f;
 
     private Vector3 shadowScreenPos;
-    [SerializeField]
     private bool lineOfSightClear;
 
     private int screenWidth;
     private int screenHeight;
-    
 
     private void Awake()
     {
@@ -56,13 +57,14 @@ public class WindowClass : MonoBehaviour
     {
         shadowCreature.SetActive(false);
         boardedWindow = false;
+        dangerousWindow = false;
 
         offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
         shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
 
         screenWidth = gameplayRenderTexture.width;
         screenHeight = gameplayRenderTexture.height;
-        Debug.Log("Screen size: [" + screenWidth + ", " + screenHeight + "]");
+        //Debug.Log("Screen size: [" + screenWidth + ", " + screenHeight + "]");
     }
 
     // Update is called once per frame
@@ -79,7 +81,9 @@ public class WindowClass : MonoBehaviour
 
                 if (EnemyOnScreen(screenWidth, screenHeight))
                 {
-                    Debug.Log("Enemy on screen!");
+                    //Debug.Log("Enemy on screen!");
+                    if(shadowCreature.activeSelf)
+                        StartCoroutine(DisableShadowAfter(0.3f));
                 }
             }
         }
@@ -91,6 +95,7 @@ public class WindowClass : MonoBehaviour
 
         if (Physics.Raycast(playerCamera.transform.position, enemyToPlayerVector.normalized, out RaycastHit hit, enemyToPlayerVector.magnitude, lineOfSightLayerMask))
         {
+            //Debug.Log("Line of sight obstructed");
             lineOfSightClear = false;
         }
         else
@@ -124,11 +129,17 @@ public class WindowClass : MonoBehaviour
         shadowCreature.SetActive(true);
         //knockSFX.Play();
         StartCoroutine(DisableSoundAfterPlaying());
+        dangerousWindow = true;
     }
 
     public bool IsWindowBoarded()
     {
         return boardedWindow;
+    }
+
+    public bool IsDangerousWindow()
+    {
+        return dangerousWindow;
     }
 
     private IEnumerator DisableSoundAfterPlaying()
@@ -139,25 +150,9 @@ public class WindowClass : MonoBehaviour
         //Debug.Log("Disabled sound");
     }
 
-    //private IEnumerator FadeShadowOut()
-    //{
-    //    Color color = shadowCreatureMaterial.color;
-    //    float startAlpha = color.a;
-
-    //    float duration = 1f; // 1 second
-    //    float elapsedSec = 0f;
-
-    //    while (elapsedSec < duration)
-    //    {
-    //        elapsedSec += Time.deltaTime;
-    //        float alpha = Mathf.Lerp(startAlpha, 0f, elapsedSec / duration);
-    //        color.a = alpha;
-    //        shadowCreatureMaterial.color = color;
-    //        yield return null; // wait for next frame
-    //    }
-
-    //    // Ensure alpha is set to 0 at the end
-    //    color.a = 0f;
-    //    shadowCreatureMaterial.color = color;
-    //}
+    private IEnumerator DisableShadowAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        shadowCreature.SetActive(false);
+    }
 }

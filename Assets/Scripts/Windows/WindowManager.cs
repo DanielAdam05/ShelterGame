@@ -13,15 +13,19 @@ public class WindowManager : MonoBehaviour
 
     [Header("Knock Cooldown")]
     [SerializeField]
+    private float initalCooldown = 45f;
+    [SerializeField]
     private float minCooldown = 15f;
     [SerializeField]
     private float maxCooldown = 30f;
-    [SerializeField]
-    private float initalCooldown = 45f;
 
     [Space(10)]
     [SerializeField]
     private float currentKnockCooldown;
+
+    [Header("Period for Successful Window Boarding")]
+    [SerializeField]
+    private float KNOCK_GRACE_PERIOD = 15f;
 
     // Non-assignale variables
     private int windowListSize;
@@ -47,7 +51,7 @@ public class WindowManager : MonoBehaviour
         // At start all windows are unboarded
         unboardedWindowsListSize = unboardedWindows.Count;
 
-        //Debug.Log("Unboarded windows list count: " + unboardedWindowsListSize);
+        //Debug.Log("Unboarded windows list size: " + unboardedWindowsListSize);
     }
 
     void Start()
@@ -66,7 +70,7 @@ public class WindowManager : MonoBehaviour
                 knockTimer -= currentKnockCooldown;
 
                 // Choose random window
-                randomWindowIdx = Random.Range(0, unboardedWindowsListSize - 1);
+                randomWindowIdx = Random.Range(0, unboardedWindowsListSize);
                 unboardedWindows[randomWindowIdx].KnockOnWindow();
                 Debug.Log("Knocked on window " + randomWindowIdx);
 
@@ -82,7 +86,7 @@ public class WindowManager : MonoBehaviour
         {
             if (unboardedWindows[i].IsWindowBoarded())
             {
-                Debug.Log("Window [" + i + "] is boarded!");
+                //Debug.Log("Window [" + i + "] is boarded!");
                 unboardedWindows.Remove(unboardedWindows[i]);
                 unboardedWindowsListSize--;
                 break;
@@ -90,6 +94,11 @@ public class WindowManager : MonoBehaviour
             //else
             //    Debug.Log(i + " not boarded");
         }
-        Debug.Log("Updated Unboarded windows list size: " + unboardedWindowsListSize);
+        //Debug.Log("Updated Unboarded windows list size: " + unboardedWindowsListSize);
+    }
+
+    public void AddKnockCooldown()
+    {
+        currentKnockCooldown += KNOCK_GRACE_PERIOD;
     }
 }

@@ -58,11 +58,6 @@ public class PlankManager : MonoBehaviour
         interactActionReference.action.Disable();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!GameState.IsGamePaused())
@@ -119,9 +114,16 @@ public class PlankManager : MonoBehaviour
                         heldPlanks -= 3;
                         uiManagerRef.UpdateHeldPlankNumber();
 
-                        // spawn planks around window logic
+                        // spawn planks on window logic
                         if (currentWindow != null && !currentWindow.IsWindowBoarded())
                         {
+                            if (currentWindow.IsDangerousWindow())
+                            {
+                                windowManager.AddKnockCooldown();
+                                StartCoroutine(uiManagerRef.PlayYouFeelSafeText());
+                                //Debug.Log("DANGEROUS window boarded");
+                            }
+
                             currentWindow.BoardWindow();
                             windowManager.UpdateBoardedWindows(); // update the uboarded windows list
                         }
@@ -146,6 +148,12 @@ public class PlankManager : MonoBehaviour
                         // spawn planks around window logic
                         if (currentWindow != null && !currentWindow.IsWindowBoarded())
                         {
+                            if (currentWindow.IsDangerousWindow())
+                            {
+                                windowManager.AddKnockCooldown();
+                                StartCoroutine(uiManagerRef.PlayYouFeelSafeText());
+                            }
+
                             currentWindow.BoardWindow();
                             windowManager.UpdateBoardedWindows(); // update the uboarded windows list
                         }
@@ -159,7 +167,6 @@ public class PlankManager : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Used 1 plank to extend fire");
                         heldPlanks -= 1;
                         uiManagerRef.UpdateHeldPlankNumber();
 
