@@ -18,12 +18,17 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private GameObject gameOverViewPlane;
 
+    // Script References
+    private Freezing freezingRef;
+    private DawnLogic dawnLogicRef;
+
     // Non-assignable variables
     private static bool gamePaused = false;
     private static bool gameLost = false;
+    private static bool gameWon = false;
 
-    // Script References
-    private Freezing freezingRef;
+    [SerializeField]
+    private float gameTimer = 0f;
 
     private void Awake()
     {
@@ -31,20 +36,25 @@ public class GameState : MonoBehaviour
         {
             freezingRef = gameObject.GetComponent<Freezing>();
         }
+
+        if (dawnLogicRef == null)
+        {
+            dawnLogicRef = gameObject.GetComponent<DawnLogic>();
+        }
     }
 
     private void Start()
     {
         gameLost = false;
         gamePaused = false;
+        gameWon = false;
 
+        // Just in case they are not diabled from editor
         if (!gameplayViewPlane.activeSelf)
         {
             gameplayViewPlane.SetActive(true);
         }
 
-        // just in case they are not diabled from editor
-        
         if (gameOverViewPlane.activeSelf)
         {
             gameOverViewPlane.SetActive(false);
@@ -53,7 +63,7 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
-        if (!gameLost)
+        if (!gameLost && !gameWon)
         {
             if (freezingRef.FrozeToDeath()) // lose conditions check
             {
@@ -71,7 +81,14 @@ public class GameState : MonoBehaviour
             {
                 ChangePauseState();
             }
-        }
+
+            gameTimer += Time.deltaTime;
+            if (gameTimer >= 10f)
+            {
+                dawnLogicRef.UpdateDawn();
+            }
+        }        
+        
 
         if (gamePaused)
         {
@@ -93,6 +110,16 @@ public class GameState : MonoBehaviour
     public static bool IsGameLost()
     {
         return gameLost;
+    }
+
+    public static bool IsGameWon()
+    {
+        return gameWon;
+    }
+
+    public static void SetGameWon()
+    {
+        gameWon = true;
     }
 
     public void QuitGame()

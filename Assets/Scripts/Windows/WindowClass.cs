@@ -83,7 +83,7 @@ public class WindowClass : MonoBehaviour
                 {
                     //Debug.Log("Enemy on screen!");
                     if(shadowCreature.activeSelf)
-                        StartCoroutine(DisableShadowAfter(0.3f));
+                        StartCoroutine(DisableShadowAfter(0.4f));
                 }
             }
         }
