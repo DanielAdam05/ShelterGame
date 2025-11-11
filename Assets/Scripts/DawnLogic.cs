@@ -4,7 +4,11 @@ public class DawnLogic : MonoBehaviour
 {
     [Header("Dawn Endgame Variables")]
     [SerializeField]
+    private float dawnStart = 150f;
+    [SerializeField]
     private float dawnDuration = 60f;
+
+    [Space(10)]
     [SerializeField]
     private Light sunLight;
 
@@ -48,5 +52,10 @@ public class DawnLogic : MonoBehaviour
         }
 
         RenderSettings.ambientLight = targetAmbientColor;
+    }
+
+    public float GetDawnStart()
+    {
+        return dawnStart;
     }
 }

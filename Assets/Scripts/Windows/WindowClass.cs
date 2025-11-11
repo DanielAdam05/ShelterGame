@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WindowClass : MonoBehaviour
@@ -24,6 +23,10 @@ public class WindowClass : MonoBehaviour
     private LayerMask lineOfSightLayerMask;
 
     [Space(10)]
+    [SerializeField]
+    private float shadowVisiblePeriod = 0.7f;
+
+    [Space(10)]
     // Non-assignable variables
     [SerializeField]
     private bool boardedWindow;
@@ -33,8 +36,6 @@ public class WindowClass : MonoBehaviour
     private AudioSource knockSFX;
     private GameObject shadowCreature;
     private Vector3 offsetShadowWorldPositon;
-
-    //private const float FADEOUT_DURATION = 1f;
 
     private Vector3 shadowScreenPos;
     private bool lineOfSightClear;
@@ -83,7 +84,7 @@ public class WindowClass : MonoBehaviour
                 {
                     //Debug.Log("Enemy on screen!");
                     if(shadowCreature.activeSelf)
-                        StartCoroutine(DisableShadowAfter(0.4f));
+                        StartCoroutine(DisableShadowAfter(shadowVisiblePeriod));
                 }
             }
         }

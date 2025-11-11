@@ -25,22 +25,13 @@ public class PlankManager : MonoBehaviour
     private RaycastManager raycastManager;
     [SerializeField]
     private WindowManager windowManager;
-
-    // Non-assignable variables
+    [SerializeField]
     private UI_Manager uiManagerRef;
+    [SerializeField]
     private FireManager fireManagerRef;
 
-    private void Awake()
-    {
-        if (uiManagerRef == null)
-        {
-            uiManagerRef = gameObject.GetComponent<UI_Manager>();
-        }
-        if (fireManagerRef == null)
-        {
-            fireManagerRef = gameObject.GetComponent<FireManager>();
-        }
-    }
+    // Non-assignable variables
+
     void Start()
     {
         //Debug.Log("Carried planks: " + heldPlanks);

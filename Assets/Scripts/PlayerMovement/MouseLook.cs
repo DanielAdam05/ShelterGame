@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Playables;
 
 public class MouseLook : MonoBehaviour
 {
@@ -28,6 +27,16 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnEnable()
+    {
+        rotationActionReference.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        rotationActionReference.action.Disable();
     }
 
     void Update()

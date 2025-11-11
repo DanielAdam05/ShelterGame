@@ -1,8 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class WindowManager : MonoBehaviour

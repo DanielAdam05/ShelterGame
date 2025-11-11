@@ -52,7 +52,16 @@ public class PlayerMovement : MonoBehaviour
         initialSpeed = moveSpeed;
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        characterController.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        characterController.enabled = false;
+    }
+
     void Update()
     {
         if (!GameState.IsGameLost())

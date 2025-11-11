@@ -1,10 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -15,6 +12,8 @@ public class UI_Manager : MonoBehaviour
     private GameObject PauseScreen;
     [SerializeField]
     private GameObject GameOverScreen;
+    [SerializeField]
+    private GameObject NoteUIScreen;
 
 
     [Header("UI Objects")]
@@ -36,15 +35,20 @@ public class UI_Manager : MonoBehaviour
     private RawImage UI_FreezeEffectImage;
     [SerializeField]
     private GameObject UI_FeelSafeText;
+    [SerializeField]
+    private GameObject UI_ReadNoteText;
 
     [Header("Script references")]
     [SerializeField]
     private RaycastManager raycastManagerReference;
     [SerializeField]
     private Freezing freezingReference;
+    [SerializeField]
+    private NoteInteraction noteInteractionReference;
+    [SerializeField]
+    private PlankManager plankManager;
 
     // Non-assignable variables
-    private PlankManager plankManager;
     int currentPlanks;
     private TextMeshProUGUI feelSafeTextMeshProUGUI;
 
@@ -64,7 +68,7 @@ public class UI_Manager : MonoBehaviour
     {
         if (plankManager != null)
         {
-            currentPlanks = gameObject.GetComponent<PlankManager>().HeldPlanks();
+            currentPlanks = plankManager.HeldPlanks();
         }
         
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
@@ -92,6 +96,9 @@ public class UI_Manager : MonoBehaviour
                 UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
 
                 UI_TooHeavyText.SetActive(currentPlanks >= 5);
+
+                UI_ReadNoteText.SetActive(noteInteractionReference.GetLookingAtNote() && !noteInteractionReference.GetNoteOpen());
+                NoteUIScreen.SetActive(noteInteractionReference.GetNoteOpen());
             }
 
             // Pause

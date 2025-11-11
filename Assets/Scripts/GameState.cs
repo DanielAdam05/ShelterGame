@@ -4,19 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+    [Header("Pause Input")]
     [SerializeField]
     private InputActionReference pauseAction;
-
-    [Header("Object dependent on GameState")]
-    [Tooltip("Objects whose lifetime is managed by Game State")]
-    [SerializeField]
-    private AudioSource windSound;
 
     [Space(10)]
     [SerializeField]
     private GameObject gameplayViewPlane;
     [SerializeField]
     private GameObject gameOverViewPlane;
+
+    [Tooltip("Sounds lifetime is managed by Game State")]
+    [Header("Objects dependent on GameState")]
+    [SerializeField]
+    private AudioSource windSound;
+    [SerializeField]
+    private AudioSource shadowShoutSound;
 
     // Script References
     private Freezing freezingRef;
@@ -27,6 +30,7 @@ public class GameState : MonoBehaviour
     private static bool gameLost = false;
     private static bool gameWon = false;
 
+    [Space(5)]
     [SerializeField]
     private float gameTimer = 0f;
 
@@ -83,7 +87,7 @@ public class GameState : MonoBehaviour
             }
 
             gameTimer += Time.deltaTime;
-            if (gameTimer >= 10f)
+            if (gameTimer >= dawnLogicRef.GetDawnStart())
             {
                 dawnLogicRef.UpdateDawn();
             }
@@ -145,6 +149,9 @@ public class GameState : MonoBehaviour
 
             if (windSound.mute)
                 windSound.mute = false;
+
+            if(!shadowShoutSound.isPlaying)
+                shadowShoutSound.Play();
         }
         else
         {
@@ -153,6 +160,9 @@ public class GameState : MonoBehaviour
 
             if (!windSound.mute)
                 windSound.mute = true;
+
+            if (shadowShoutSound.isPlaying)
+                shadowShoutSound.Pause();
         }
     }
 }
