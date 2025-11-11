@@ -57,7 +57,7 @@ public class WindowManager : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGameLost() && !GameState.IsGamePaused())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
             knockTimer += Time.deltaTime;
 

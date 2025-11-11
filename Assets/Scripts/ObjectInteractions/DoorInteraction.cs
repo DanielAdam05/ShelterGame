@@ -17,11 +17,14 @@ public class DoorInteraction : MonoBehaviour
 
     void Update()
     {
-        if (doorActionReference.action.triggered)
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            if (raycastManager.LookingAtTag("Door"))
+            if (doorActionReference.action.triggered)
             {
-                StartCoroutine(uiManager.PlayOutsideDoorText());
+                if (raycastManager.LookingAtTag("Door"))
+                {
+                    StartCoroutine(uiManager.PlayOutsideDoorText());
+                }
             }
         }
     }

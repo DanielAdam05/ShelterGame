@@ -12,6 +12,10 @@ public class EnemyAttackCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
+        {
+
+        }
+
     }
 }

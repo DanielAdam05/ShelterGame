@@ -31,19 +31,22 @@ public class ViewBobbing : MonoBehaviour
 
     void Update()
     {
-        if (playerMovementRef.IsMoving())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            sinTime += effectSpeed * Time.deltaTime;
-        }
-        else 
-        {
-            sinTime = 0f;
-        }
+            if (playerMovementRef.IsMoving())
+            {
+                sinTime += effectSpeed * Time.deltaTime;
+            }
+            else
+            {
+                sinTime = 0f;
+            }
 
-        float sinAmountY = -Mathf.Abs(effectIntensity * Mathf.Sin(sinTime));
-        Vector3 sinAmountX = effectIntensity * effectIntesityX * Mathf.Cos(sinTime) * positionFollowerRef.transform.right;
+            float sinAmountY = -Mathf.Abs(effectIntensity * Mathf.Sin(sinTime));
+            Vector3 sinAmountX = effectIntensity * effectIntesityX * Mathf.Cos(sinTime) * positionFollowerRef.transform.right;
 
-        positionFollowerRef.offset = new Vector3(originalOffset.x, effectIntensity * sinAmountY, originalOffset.z);
-        positionFollowerRef.offset += sinAmountX;
+            positionFollowerRef.offset = new Vector3(originalOffset.x, effectIntensity * sinAmountY, originalOffset.z);
+            positionFollowerRef.offset += sinAmountX;
+        }
     }
 }

@@ -51,7 +51,7 @@ public class PlankManager : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
-        if (!GameState.IsGamePaused())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
             if (context.interaction is PressInteraction)
             {

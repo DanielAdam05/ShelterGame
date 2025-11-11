@@ -9,11 +9,13 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     private GameObject PlayerUI;
     [SerializeField]
+    private GameObject NoteUIScreen;
+    [SerializeField]
     private GameObject PauseScreen;
     [SerializeField]
     private GameObject GameOverScreen;
     [SerializeField]
-    private GameObject NoteUIScreen;
+    private GameObject GameWonScreen;
 
 
     [Header("UI Objects")]
@@ -85,6 +87,11 @@ public class UI_Manager : MonoBehaviour
         {
             GameOverScreen.SetActive(false);
         }
+
+        if (GameWonScreen.activeSelf)
+        {
+            GameWonScreen.SetActive(false);
+        }
     }
 
     void Update()
@@ -93,33 +100,38 @@ public class UI_Manager : MonoBehaviour
 
         if (!GameState.IsGameLost())
         {
-            if (!isGamePaused)
+            if (!GameState.IsGameWon())
             {
-                UpdateFreezeImageAlpha();
+                if (!isGamePaused)
+                {
+                    UpdateFreezeImageAlpha();
 
-                UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank") || raycastManagerReference.LookingAtTag("Lighter"));
+                    UI_PickupText.SetActive(raycastManagerReference.LookingAtTag("Plank") || raycastManagerReference.LookingAtTag("Lighter"));
 
-                ManageWindowBoardingUI();
+                    ManageWindowBoardingUI();
 
-                UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
+                    UI_ExtendFireText.SetActive(raycastManagerReference.LookingAtTag("Fireplace"));
 
-                UI_TooHeavyText.SetActive(currentPlanks >= 5);
+                    UI_TooHeavyText.SetActive(currentPlanks >= 5);
 
-                UI_ReadNoteText.SetActive(noteInteractionReference.GetLookingAtNote() && !noteInteractionReference.GetNoteOpen());
-                NoteUIScreen.SetActive(noteInteractionReference.GetNoteOpen());
+                    UI_ReadNoteText.SetActive(noteInteractionReference.GetLookingAtNote() && !noteInteractionReference.GetNoteOpen());
+                    NoteUIScreen.SetActive(noteInteractionReference.GetNoteOpen());
+                }
+
+                // Pause
+                PauseScreen.SetActive(isGamePaused);
+                UI_Crosshair.SetActive(!isGamePaused);
             }
-
-            // Pause
-            PauseScreen.SetActive(isGamePaused);
-            UI_Crosshair.SetActive(!isGamePaused);
+            else
+            {
+                GameWonScreen.SetActive(true);
+                PlayerUI.SetActive(false);
+            }
         }
         else
         {
             GameOverScreen.SetActive(true);
-
             PlayerUI.SetActive(false);
-
-            // if try again button is pressed -> call GameState.ResetScene()
         } 
     }
 

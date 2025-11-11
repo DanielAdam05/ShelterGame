@@ -43,40 +43,37 @@ public class Freezing : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGameLost())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            if (!GameState.IsGamePaused())
+            if (freezeMeter < 100)
             {
-                if (freezeMeter < 100)
+                currentFreezeTimer += Time.deltaTime;
+            }
+
+            if (currentFreezeTimer >= FREEZE_INTERVAL)
+            {
+                currentFreezeTimer -= FREEZE_INTERVAL;
+
+                if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
                 {
-                    currentFreezeTimer += Time.deltaTime;
+                    if (coldBreathVFX.isPlaying == false)
+                        coldBreathVFX.Play();
+
+                    freezeMeter += FREEZE_SPEED;
                 }
-
-                if (currentFreezeTimer >= FREEZE_INTERVAL)
+                else // warm up
                 {
-                    currentFreezeTimer -= FREEZE_INTERVAL;
+                    if (coldBreathVFX.isPlaying == true)
+                        coldBreathVFX.Stop();
 
-                    if (!IsPlayerInWarmRoom() || fireManagerRef.FireRanOut()) // freeze
+
+                    if (freezeMeter > 0)
                     {
-                        if (coldBreathVFX.isPlaying == false)
-                            coldBreathVFX.Play();
-
-                        freezeMeter += FREEZE_SPEED;
+                        freezeMeter -= (FREEZE_SPEED * 7);
                     }
-                    else // warm up
+                    else if (freezeMeter < 0)
                     {
-                        if (coldBreathVFX.isPlaying == true)
-                            coldBreathVFX.Stop();
-               
-
-                        if (freezeMeter > 0)
-                        {
-                            freezeMeter -= (FREEZE_SPEED * 7);
-                        }
-                        else if (freezeMeter < 0)
-                        {
-                            freezeMeter = 0;
-                        }
+                        freezeMeter = 0;
                     }
                 }
             }

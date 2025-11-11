@@ -26,21 +26,24 @@ public class NoteInteraction : MonoBehaviour
 
     void Update()
     {
-        if (raycastManager.LookingAtTag("Note"))
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            isLookingAtNote = true;
-
-            if (noteActionReference.action.triggered)
+            if (raycastManager.LookingAtTag("Note"))
             {
-                isNoteOpen = !isNoteOpen;
+                isLookingAtNote = true;
 
-                mouseLook.enabled = !mouseLook.enabled;
-                playerMovement.enabled = !playerMovement.enabled;
+                if (noteActionReference.action.triggered)
+                {
+                    isNoteOpen = !isNoteOpen;
+
+                    mouseLook.enabled = !mouseLook.enabled;
+                    playerMovement.enabled = !playerMovement.enabled;
+                }
             }
-        }
-        else
-        {
-            isLookingAtNote = false;
+            else
+            {
+                isLookingAtNote = false;
+            }
         }
     }
 

@@ -41,22 +41,19 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGameLost())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            if (!GameState.IsGamePaused())
-            {
-                rotationInput = rotationActionReference.action.ReadValue<Vector2>() * cameraSensitivity;
+            rotationInput = rotationActionReference.action.ReadValue<Vector2>() * cameraSensitivity;
 
-                xRotation += rotationInput.y;
-                xRotation = Mathf.Clamp(xRotation, cameraClampRangeX.x, cameraClampRangeX.y);
+            xRotation += rotationInput.y;
+            xRotation = Mathf.Clamp(xRotation, cameraClampRangeX.x, cameraClampRangeX.y);
 
-                yRotation += rotationInput.x;
+            yRotation += rotationInput.x;
 
-                // UP/DOWN - rotate camera 
-                transform.localRotation = Quaternion.Euler(-xRotation, 0f, 0f);
-                // LEFT/RIGHT - rotate player root
-                playerRoot.localRotation = Quaternion.Euler(0f, yRotation, 0f);
-            }
+            // UP/DOWN - rotate camera 
+            transform.localRotation = Quaternion.Euler(-xRotation, 0f, 0f);
+            // LEFT/RIGHT - rotate player root
+            playerRoot.localRotation = Quaternion.Euler(0f, yRotation, 0f);
         }
     }
 }

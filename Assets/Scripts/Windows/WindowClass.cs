@@ -83,7 +83,7 @@ public class WindowClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameState.IsGameLost() && !GameState.IsGamePaused())
+        if(!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
             if (shadowCreature.activeSelf)
             {

@@ -64,12 +64,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGameLost())
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            if (!GameState.IsGamePaused())
-            {
-                MovePlayer();
-            }
+            MovePlayer();
         }
     }
 

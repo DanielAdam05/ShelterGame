@@ -4,15 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+    [Header("Camera Pivot Variables")]
+    [SerializeField]
+    private Transform cameraPivot;
+    [SerializeField]
+    private Transform gameLostCameraPos;
+    [SerializeField]
+    private Transform gameWonCameraPos;
+
     [Header("Pause Input")]
     [SerializeField]
     private InputActionReference pauseAction;
-
-    [Space(10)]
-    [SerializeField]
-    private GameObject gameplayViewPlane;
-    [SerializeField]
-    private GameObject gameOverViewPlane;
 
     [Tooltip("Sounds lifetime is managed by Game State")]
     [Header("Objects dependent on GameState")]
@@ -20,6 +22,10 @@ public class GameState : MonoBehaviour
     private AudioSource windSound;
     [SerializeField]
     private AudioSource shadowShoutSound;
+    [SerializeField]
+    private ParticleSystem snow1;
+    [SerializeField]
+    private ParticleSystem snow2;
 
     // Script References
     private Freezing freezingRef;
@@ -52,46 +58,44 @@ public class GameState : MonoBehaviour
         gameLost = false;
         gamePaused = false;
         gameWon = false;
-
-        // Just in case they are not diabled from editor
-        if (!gameplayViewPlane.activeSelf)
-        {
-            gameplayViewPlane.SetActive(true);
-        }
-
-        if (gameOverViewPlane.activeSelf)
-        {
-            gameOverViewPlane.SetActive(false);
-        }
     }
 
     void Update()
     {
-        if (!gameLost && !gameWon)
+        if (!gameLost)
         {
-            if (freezingRef.FrozeToDeath()) // lose conditions check
+            if (!gameWon)
             {
-                gameLost = true;
+                if (freezingRef.FrozeToDeath()) // lose conditions check
+                {
+                    gameLost = true;
 
+                    Cursor.lockState = CursorLockMode.None;
+
+                    cameraPivot.transform.SetPositionAndRotation(gameLostCameraPos.transform.position, gameLostCameraPos.transform.rotation);
+                }
+                else if (pauseAction.action.triggered) // (un)pause if game is not lost
+                {
+                    ChangePauseState();
+                }
+
+                gameTimer += Time.deltaTime;
+                if (gameTimer >= dawnLogicRef.GetDawnStart())
+                {
+                    dawnLogicRef.UpdateDawn();
+                }
+            }
+            else
+            {
                 Cursor.lockState = CursorLockMode.None;
 
-                if (gameplayViewPlane.activeSelf)
-                    gameplayViewPlane.SetActive(false);
+                cameraPivot.transform.SetPositionAndRotation(gameWonCameraPos.transform.position, gameWonCameraPos.transform.rotation);
 
-                if (!gameOverViewPlane.activeSelf)
-                    gameOverViewPlane.SetActive(true);
+                snow1.Stop();
+                snow2.Stop();
+                windSound.volume = 0.04f;
             }
-            else if (pauseAction.action.triggered) // (un)pause if game is not lost
-            {
-                ChangePauseState();
-            }
-
-            gameTimer += Time.deltaTime;
-            if (gameTimer >= dawnLogicRef.GetDawnStart())
-            {
-                dawnLogicRef.UpdateDawn();
-            }
-        }        
+        }
         
 
         if (gamePaused)

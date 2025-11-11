@@ -42,25 +42,29 @@ public class DawnLogic : MonoBehaviour
 
     public void UpdateDawn()
     {
-        dawnTimer += Time.deltaTime;
-
-        if (dawnTimer >= DAWN_CHANGE_SECONDS)
+        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
         {
-            dawnTimer -= DAWN_CHANGE_SECONDS;
+            dawnTimer += Time.deltaTime;
 
-            targetAmbientColor += ambientColorStep;
-            sunLight.intensity += sunLightIntesnityStep;
-            RenderSettings.fogDensity -= fogDensityStep;
-            targetCameraBackgroundColor += cameraBackgroundColorStep;
-
-            if (sunLight.intensity >= 2.5f)
+            if (dawnTimer >= DAWN_CHANGE_SECONDS)
             {
-                GameState.SetGameWon();
-            }
-        }
+                dawnTimer -= DAWN_CHANGE_SECONDS;
 
-        RenderSettings.ambientLight = targetAmbientColor;
-        renderCamera.backgroundColor = targetCameraBackgroundColor;
+                targetAmbientColor += ambientColorStep;
+                sunLight.intensity += sunLightIntesnityStep;
+                RenderSettings.fogDensity -= fogDensityStep;
+                targetCameraBackgroundColor += cameraBackgroundColorStep;
+
+                if (sunLight.intensity >= 2.5f)
+                {
+                    GameState.SetGameWon();
+                }
+            }
+
+            RenderSettings.ambientLight = targetAmbientColor;
+            renderCamera.backgroundColor = targetCameraBackgroundColor;
+        }
+            
     }
 
     public float GetDawnStart()
