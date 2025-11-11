@@ -151,7 +151,7 @@ public class GameState : MonoBehaviour
                 windSound.mute = false;
 
             if(!shadowShoutSound.isPlaying)
-                shadowShoutSound.Play();
+                shadowShoutSound.UnPause();
         }
         else
         {

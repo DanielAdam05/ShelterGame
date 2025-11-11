@@ -36,6 +36,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     private GameObject UI_FeelSafeText;
     [SerializeField]
+    private GameObject UI_OutsideDoorText;
+    [SerializeField]
     private GameObject UI_ReadNoteText;
 
     [Header("Script references")]
@@ -51,6 +53,7 @@ public class UI_Manager : MonoBehaviour
     // Non-assignable variables
     int currentPlanks;
     private TextMeshProUGUI feelSafeTextMeshProUGUI;
+    private TextMeshProUGUI outsideDootTextMeshProUGUI;
 
     private void Awake()
     {
@@ -62,6 +65,11 @@ public class UI_Manager : MonoBehaviour
         if (UI_FeelSafeText != null)
         {
             feelSafeTextMeshProUGUI = UI_FeelSafeText.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (UI_OutsideDoorText != null)
+        {
+            outsideDootTextMeshProUGUI = UI_OutsideDoorText.GetComponent<TextMeshProUGUI>();
         }
     }
     void Start()
@@ -178,5 +186,25 @@ public class UI_Manager : MonoBehaviour
         // Ensure alpha is exactly zero at end
         feelSafeTextMeshProUGUI.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         UI_FeelSafeText.SetActive(false);
+    }
+
+    public IEnumerator PlayOutsideDoorText(float duration = 1.5f)
+    {
+        UI_OutsideDoorText.SetActive(true);
+
+        Color originalColor = new(outsideDootTextMeshProUGUI.color.r, outsideDootTextMeshProUGUI.color.g, outsideDootTextMeshProUGUI.color.b, 1f);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            outsideDootTextMeshProUGUI.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        // Ensure alpha is exactly zero at end
+        outsideDootTextMeshProUGUI.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        UI_OutsideDoorText.SetActive(false);
     }
 }

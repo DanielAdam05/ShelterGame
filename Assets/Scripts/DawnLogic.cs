@@ -8,9 +8,11 @@ public class DawnLogic : MonoBehaviour
     [SerializeField]
     private float dawnDuration = 60f;
 
-    [Space(10)]
+    [Header("Objects changed by Dawn")]
     [SerializeField]
     private Light sunLight;
+    [SerializeField]
+    private Camera renderCamera;
 
     // Dawn non-assignable variables
     private float dawnTimer = 0f;
@@ -22,6 +24,9 @@ public class DawnLogic : MonoBehaviour
     private Color ambientColorStep;
     private float sunLightIntesnityStep;
     private float fogDensityStep;
+    private Color targetCameraBackgroundColor;
+    private Color endGoalCameraBackgroundColor = new(0.64f, 0.5f, 0.24f);
+    private Color cameraBackgroundColorStep;
 
     void Start()
     {
@@ -31,6 +36,8 @@ public class DawnLogic : MonoBehaviour
         ambientColorStep = (endGoalAmbientColor - targetAmbientColor) / dawnChangeDivisor;
         sunLightIntesnityStep = 2.5f / dawnChangeDivisor;
         fogDensityStep = RenderSettings.fogDensity / dawnChangeDivisor;
+        targetCameraBackgroundColor = renderCamera.backgroundColor;
+        cameraBackgroundColorStep = (endGoalCameraBackgroundColor - targetCameraBackgroundColor) / dawnChangeDivisor;
     }
 
     public void UpdateDawn()
@@ -44,6 +51,7 @@ public class DawnLogic : MonoBehaviour
             targetAmbientColor += ambientColorStep;
             sunLight.intensity += sunLightIntesnityStep;
             RenderSettings.fogDensity -= fogDensityStep;
+            targetCameraBackgroundColor += cameraBackgroundColorStep;
 
             if (sunLight.intensity >= 2.5f)
             {
@@ -52,6 +60,7 @@ public class DawnLogic : MonoBehaviour
         }
 
         RenderSettings.ambientLight = targetAmbientColor;
+        renderCamera.backgroundColor = targetCameraBackgroundColor;
     }
 
     public float GetDawnStart()

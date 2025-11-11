@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WindowClass : MonoBehaviour
 {
-    [Header("Window Members")]
+    [Header("Window Children")]
     [SerializeField]
     private GameObject boardedPlanks;
 
@@ -25,6 +25,12 @@ public class WindowClass : MonoBehaviour
     [Space(10)]
     [SerializeField]
     private float shadowVisiblePeriod = 0.7f;
+    [SerializeField]
+    private float shadowAttackPeriod = 25f;
+
+    [Header("Enemy about to attack sound")]
+    [SerializeField]
+    private AudioSource dangerSound;
 
     [Space(10)]
     // Non-assignable variables
@@ -32,6 +38,12 @@ public class WindowClass : MonoBehaviour
     private bool boardedWindow;
     [SerializeField]
     private bool dangerousWindow;
+
+    [Space(10)]
+    [SerializeField]
+    private float shadowOnWindowTimer = 0f;
+    private bool timerStarted = false;
+    private bool shouldPlayDangerSound = false;
 
     private AudioSource knockSFX;
     private GameObject shadowCreature;
@@ -78,6 +90,7 @@ public class WindowClass : MonoBehaviour
                 offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
                 shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
 
+                timerStarted = true;
                 //Debug.Log(shadowScreenPos);
 
                 if (EnemyOnScreen(screenWidth, screenHeight))
@@ -85,6 +98,22 @@ public class WindowClass : MonoBehaviour
                     //Debug.Log("Enemy on screen!");
                     if(shadowCreature.activeSelf)
                         StartCoroutine(DisableShadowAfter(shadowVisiblePeriod));
+                }
+            }
+
+            if (timerStarted)
+            {
+                shadowOnWindowTimer += Time.deltaTime;
+
+                if (shadowOnWindowTimer >= (shadowAttackPeriod - 10f) && !shouldPlayDangerSound)
+                {
+                    dangerSound.Play();
+                    shouldPlayDangerSound = true;
+                }
+                else if (shadowOnWindowTimer >= shadowAttackPeriod)
+                {
+                    // Call game is lost
+                    timerStarted = false;
                 }
             }
         }
@@ -115,6 +144,9 @@ public class WindowClass : MonoBehaviour
         boardedWindow = true;
         boardedPlanks.SetActive(true);
 
+        shadowOnWindowTimer = 0f;
+        timerStarted = false;
+        dangerousWindow = false;
         shadowCreature.SetActive(false);
     }
 

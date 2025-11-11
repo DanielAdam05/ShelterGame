@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.32704395, g: 0.32190174, b: 0.32190174, a: 1}
+  m_FogColor: {r: 0.28930807, g: 0.28930807, b: 0.28930807, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.12
+  m_FogDensity: 0.14
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.52385175, g: 0.56961095, b: 0.6855345, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.4
   m_FlareStrength: 1
@@ -445,6 +445,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
@@ -5663,6 +5667,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 303596254}
@@ -5829,6 +5837,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
@@ -11413,7 +11425,7 @@ GameObject:
   - component: {fileID: 404230743}
   - component: {fileID: 404230742}
   m_Layer: 8
-  m_Name: Door02 (2)
+  m_Name: Door03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11978,6 +11990,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 303596254}
@@ -12075,6 +12091,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
@@ -12195,7 +12215,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.12578613, g: 0.12578613, b: 0.12578613, a: 0}
+  m_BackGroundColor: {r: 0.11320752, g: 0.112851515, b: 0.112851515, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -12595,6 +12615,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
@@ -13500,6 +13524,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849744278}
   m_CullTransparentMesh: 1
+--- !u!1 &875926209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875926210}
+  - component: {fileID: 875926212}
+  - component: {fileID: 875926211}
+  m_Layer: 5
+  m_Name: UI_MainDoorText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &875926210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875926209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1524161162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 11, y: -256}
+  m_SizeDelta: {x: 800, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &875926211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875926209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: I shouldn't go out...
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 80
+  m_fontSizeBase: 80
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &875926212
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875926209}
+  m_CullTransparentMesh: 1
 --- !u!1 &886335565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 973834073792873920, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
@@ -14160,6 +14320,7 @@ MonoBehaviour:
   dawnStart: 150
   dawnDuration: 30
   sunLight: {fileID: 2061180322}
+  renderCamera: {fileID: 585070439}
 --- !u!1001 &1046762271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16193,7 +16354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To whoever should find this note, know that you are in grave peril\r\n\r\nYou
+  m_text: "To whoever finds this note, know that you are in grave peril\r\n\r\nYou
     shall find planks nearby, but be warned\u2014there is but a SCARCE SUPPLY. Use
     them to bar the windows\u2014but do so ONLY WHEN YOU ARE CERTAIN it stands nearby,
     for It shall show itself by SOUND.\n\nThe weather grows chill in these latter
@@ -16207,8 +16368,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4279900698
+  m_fontColor: {r: 0.10062885, g: 0.10062885, b: 0.10062885, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16288,7 +16449,7 @@ GameObject:
   - component: {fileID: 1442686185}
   - component: {fileID: 1442686184}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: ShadowScream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16399,12 +16560,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442686183}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.05, y: 2.9395578, z: 10.73}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.395657, y: 2.896629, z: 3.4262538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2143242485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1470224711
 GameObject:
@@ -16492,6 +16653,7 @@ RectTransform:
   - {fileID: 422047721}
   - {fileID: 1304067786}
   - {fileID: 96018920}
+  - {fileID: 875926210}
   - {fileID: 849744279}
   - {fileID: 477197084}
   - {fileID: 418455607}
@@ -16897,6 +17059,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 303596254}
@@ -17300,13 +17466,36 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711870957}
+  - component: {fileID: 1712230350}
+  - component: {fileID: 1712230352}
   m_Layer: 8
-  m_Name: Door01
-  m_TagString: Untagged
+  m_Name: Door_Main
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1712230350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712230349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2831745, y: 2.359464, z: 0.2985633}
+  m_Center: {x: -0.64158726, y: 0.67973197, z: 0.050718337}
 --- !u!1 &1712230351
 GameObject:
   m_ObjectHideFlags: 0
@@ -17318,7 +17507,6 @@ GameObject:
   - component: {fileID: 1711870959}
   - component: {fileID: 1715295181}
   - component: {fileID: 1714163981}
-  - component: {fileID: 1718526317}
   m_Layer: 8
   m_Name: Door01 1
   m_TagString: Untagged
@@ -17326,6 +17514,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1712230352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712230349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf218ea7fa6e06e479c4570aaa4a53c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorActionReference: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  raycastManager: {fileID: 303596256}
+  uiManager: {fileID: 1824223209}
 --- !u!23 &1714163977
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17603,28 +17806,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 5381912f22f2e044db439d7fe95c968d, type: 3}
---- !u!64 &1718526317
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712230351}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 5381912f22f2e044db439d7fe95c968d, type: 3}
 --- !u!64 &1718526319
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17660,7 +17841,7 @@ GameObject:
   - component: {fileID: 1730377170}
   - component: {fileID: 1730377169}
   m_Layer: 8
-  m_Name: Door02 (1)
+  m_Name: Door02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18330,6 +18511,7 @@ MonoBehaviour:
   UI_ExtendFireText: {fileID: 477197083}
   UI_FreezeEffectImage: {fileID: 1608917281}
   UI_FeelSafeText: {fileID: 96018919}
+  UI_OutsideDoorText: {fileID: 875926209}
   UI_ReadNoteText: {fileID: 1304067785}
   raycastManagerReference: {fileID: 303596256}
   freezingReference: {fileID: 989393224}
@@ -19172,6 +19354,168 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068772077}
   m_Mesh: {fileID: -8552080446553261713, guid: 8bb1ce573d002864fa732523ed29e19b, type: 3}
+--- !u!1 &2128390494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128390495}
+  - component: {fileID: 2128390496}
+  m_Layer: 0
+  m_Name: DangerSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128390495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128390494}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2143242485}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2128390496
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128390494}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: a721a8045d9c6a947b41aebc83e45edb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &2143242484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143242485}
+  m_Layer: 0
+  m_Name: AudioSources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143242485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143242484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.654343, y: 0.042928696, z: 7.3037457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1442686185}
+  - {fileID: 2128390495}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143408136
 GameObject:
   m_ObjectHideFlags: 0
@@ -20702,7 +21046,7 @@ GameObject:
   - component: {fileID: 746703165882542513}
   - component: {fileID: 746703165882542514}
   m_Layer: 8
-  m_Name: Door02
+  m_Name: Door01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26983,6 +27327,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
+      propertyPath: dangerSound
+      value: 
+      objectReference: {fileID: 2128390496}
+    - target: {fileID: 8097612836790261266, guid: 43679d8fbf5c00a469e63373e95863eb, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 303596254}
@@ -31667,8 +32015,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   shadowVisiblePeriod: 0.7
+  shadowAttackPeriod: 25
+  dangerSound: {fileID: 2128390496}
   boardedWindow: 0
   dangerousWindow: 0
+  shadowOnWindowTimer: 0
 --- !u!82 &8097612836780431767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32538,5 +32889,5 @@ SceneRoots:
   - {fileID: 307947122}
   - {fileID: 1559504630}
   - {fileID: 1786539368}
-  - {fileID: 1442686185}
   - {fileID: 2063675613}
+  - {fileID: 2143242485}

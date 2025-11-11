@@ -10,6 +10,7 @@ TagManager:
   - Lighter
   - SmallWindow
   - Note
+  - Door
   layers:
   - Default
   - TransparentFX
