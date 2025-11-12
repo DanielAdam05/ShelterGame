@@ -60,6 +60,7 @@ public class Freezing : MonoBehaviour
                         coldBreathVFX.Play();
 
                     freezeMeter += FREEZE_SPEED;
+                    //Debug.Log(freezeMeter);
                 }
                 else // warm up
                 {
@@ -80,7 +81,7 @@ public class Freezing : MonoBehaviour
         }
     }
 
-    private bool IsPlayerInWarmRoom()
+    public bool IsPlayerInWarmRoom()
     {
         return warmRoomCollider.bounds.Contains(playerTransform.position);
     }

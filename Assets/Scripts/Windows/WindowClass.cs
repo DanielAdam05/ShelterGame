@@ -32,6 +32,10 @@ public class WindowClass : MonoBehaviour
     [SerializeField]
     private AudioSource dangerSound;
 
+    [Header("Script Reference")]
+    [SerializeField]
+    private EnemyAttackCheck enemyAttackRef;
+
     [Space(10)]
     // Non-assignable variables
     [SerializeField]
@@ -95,7 +99,6 @@ public class WindowClass : MonoBehaviour
 
                 if (EnemyOnScreen(screenWidth, screenHeight))
                 {
-                    //Debug.Log("Enemy on screen!");
                     if(shadowCreature.activeSelf)
                         StartCoroutine(DisableShadowAfter(shadowVisiblePeriod));
                 }
@@ -112,7 +115,7 @@ public class WindowClass : MonoBehaviour
                 }
                 else if (shadowOnWindowTimer >= shadowAttackPeriod)
                 {
-                    // Call game is lost
+                    StartCoroutine(enemyAttackRef.StartAttackSequence());
                     timerStarted = false;
                 }
             }

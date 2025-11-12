@@ -96,13 +96,11 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
-        bool isGamePaused = GameState.IsGamePaused();
-
         if (!GameState.IsGameLost())
         {
             if (!GameState.IsGameWon())
             {
-                if (!isGamePaused)
+                if (!GameState.IsGamePaused())
                 {
                     UpdateFreezeImageAlpha();
 
@@ -119,8 +117,8 @@ public class UI_Manager : MonoBehaviour
                 }
 
                 // Pause
-                PauseScreen.SetActive(isGamePaused);
-                UI_Crosshair.SetActive(!isGamePaused);
+                PauseScreen.SetActive(GameState.IsGamePaused());
+                UI_Crosshair.SetActive(!GameState.IsGamePaused());
             }
             else
             {
@@ -174,6 +172,7 @@ public class UI_Manager : MonoBehaviour
 
     private void UpdateFreezeImageAlpha()
     {
+        //Debug.Log("UPDATED");
         Color color = UI_FreezeEffectImage.color;
         color.a = freezingReference.FreezeMeter() / 400f;
 

@@ -16,7 +16,7 @@ public class DawnLogic : MonoBehaviour
 
     // Dawn non-assignable variables
     private float dawnTimer = 0f;
-    private const float DAWN_CHANGE_SECONDS = 0.5f;
+    private const float DAWN_CHANGE_SECONDS = 0.05f;
     private float dawnChangeDivisor;
 
     private Color targetAmbientColor;
