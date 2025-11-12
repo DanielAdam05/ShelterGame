@@ -27,6 +27,10 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private ParticleSystem snow2;
 
+    [Header("Script Refrence")]
+    [SerializeField]
+    private EnemyAttackCheck enemyAttackCheckRef;
+
     // Script References
     private Freezing freezingRef;
     private DawnLogic dawnLogicRef;
@@ -66,7 +70,7 @@ public class GameState : MonoBehaviour
         {
             if (!gameWon)
             {
-                if (freezingRef.FrozeToDeath()) // lose conditions check
+                if (freezingRef.FrozeToDeath() || enemyAttackCheckRef.ShadowCollidedWithPlayer()) // lose conditions check
                 {
                     gameLost = true;
 
@@ -128,6 +132,11 @@ public class GameState : MonoBehaviour
     public static void SetGameWon()
     {
         gameWon = true;
+    }
+
+    public static void SetGameLost()
+    {
+        gameLost = true;
     }
 
     public void QuitGame()

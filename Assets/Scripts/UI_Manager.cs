@@ -13,7 +13,9 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     private GameObject PauseScreen;
     [SerializeField]
-    private GameObject GameOverScreen;
+    private GameObject GameOverFrozenScreen;
+    [SerializeField]
+    private GameObject GameOverDiedScreen;
     [SerializeField]
     private GameObject GameWonScreen;
 
@@ -51,6 +53,8 @@ public class UI_Manager : MonoBehaviour
     private NoteInteraction noteInteractionReference;
     [SerializeField]
     private PlankManager plankManager;
+    [SerializeField]
+    private EnemyAttackCheck enemyAttackCheckRef;
 
     // Non-assignable variables
     int currentPlanks;
@@ -83,9 +87,9 @@ public class UI_Manager : MonoBehaviour
         
         UI_CarriedPlanksText.GetComponent<TextMeshProUGUI>().text = "x " + currentPlanks;
 
-        if (GameOverScreen.activeSelf)
+        if (GameOverFrozenScreen.activeSelf)
         {
-            GameOverScreen.SetActive(false);
+            GameOverFrozenScreen.SetActive(false);
         }
 
         if (GameWonScreen.activeSelf)
@@ -128,7 +132,14 @@ public class UI_Manager : MonoBehaviour
         }
         else
         {
-            GameOverScreen.SetActive(true);
+            if (enemyAttackCheckRef.ShadowCollidedWithPlayer())
+            {
+                GameOverDiedScreen.SetActive(true);
+            }
+            else
+            {
+                GameOverFrozenScreen.SetActive(true);
+            }
             PlayerUI.SetActive(false);
         } 
     }

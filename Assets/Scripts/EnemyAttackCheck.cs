@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class EnemyAttackCheck : MonoBehaviour
 {
+    [Header("Enemy Variables")]
+    [SerializeField]
+    private float shadowRunSpeed;
+    [SerializeField]
+    private float maxTimeWithoutBeingSeen = 10f;
+
     [Header("Transform Variables")]
     [SerializeField]
     private Transform outsideWarmRoomPos;
@@ -13,14 +19,12 @@ public class EnemyAttackCheck : MonoBehaviour
     [Space(10)]
     [SerializeField]
     private Camera playerCamera;
+    [SerializeField]
+    private Transform playerTransform;
 
     [Header("Script Refrences")]
     [SerializeField]
     private Freezing freezingRef;
-
-    [Header("Enemy Variables")]
-    [SerializeField]
-    private float shadowRunSpeed;
 
     [Space(10)]
     [SerializeField]
@@ -33,6 +37,8 @@ public class EnemyAttackCheck : MonoBehaviour
     // Non-assignable variables
     private Transform playerCameraTransform;
 
+    [Space(10)]
+    [SerializeField]
     private bool attackSequenceStarted = false;
     private float attackTimer = 0f;
     private Vector3 offsetShadowWorldPos;
@@ -41,6 +47,9 @@ public class EnemyAttackCheck : MonoBehaviour
     private float screenHeight;
     private bool lineOfSightClear;
     private Vector3 shadowScreenPos;
+
+    private AudioSource jumpScareSound;
+    private bool canPlayJumpScareSound = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,6 +62,9 @@ public class EnemyAttackCheck : MonoBehaviour
 
         offsetShadowWorldPos = gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
         shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPos);
+
+        jumpScareSound = gameObject.GetComponent<AudioSource>();
+        canPlayJumpScareSound = true;
     }
 
     // Update is called once per frame
@@ -64,12 +76,13 @@ public class EnemyAttackCheck : MonoBehaviour
             {
                 attackTimer += Time.deltaTime;
 
+                offsetShadowWorldPos = gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
                 shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPos);
                 if (EnemyOnScreen(screenWidth, screenHeight))
                 {
                     RushPlayer();
                 }
-                else if (attackTimer >= 10f)
+                else if (attackTimer >= maxTimeWithoutBeingSeen)
                 {
                     RushPlayer();
                 }
@@ -79,9 +92,9 @@ public class EnemyAttackCheck : MonoBehaviour
 
     public IEnumerator StartAttackSequence()
     {
+        attackSequenceStarted = true;
         yield return new WaitForSeconds(5f);
         SpawnShadowEnemy();
-        attackSequenceStarted = true;
     }
 
     private void SpawnShadowEnemy()
@@ -98,6 +111,12 @@ public class EnemyAttackCheck : MonoBehaviour
 
     private void RushPlayer()
     {
+        if (canPlayJumpScareSound)
+        {
+            jumpScareSound.Play();
+            canPlayJumpScareSound = false;
+        }
+
         Vector3 enemyToPlayerDir = playerCameraTransform.position - gameObject.transform.position;
         gameObject.transform.position += shadowRunSpeed * Time.deltaTime * enemyToPlayerDir;
     }
@@ -119,5 +138,16 @@ public class EnemyAttackCheck : MonoBehaviour
                 (shadowScreenPos.y > 0 && shadowScreenPos.y <= screenHeight) &&
                 shadowScreenPos.z >= 0 &&
                 lineOfSightClear;
+    }
+
+    public bool AttackSequenceStarted()
+    {
+        return attackSequenceStarted;
+    }
+
+    public bool ShadowCollidedWithPlayer()
+    {
+        float distance = Vector3.Distance(gameObject.transform.position, playerTransform.position);
+        return distance <= 1.5f;
     }
 }

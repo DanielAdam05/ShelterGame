@@ -50,6 +50,7 @@ public class WindowClass : MonoBehaviour
     private bool shouldPlayDangerSound = false;
 
     private AudioSource knockSFX;
+    private AudioSource windowBreakSound;
     private GameObject shadowCreature;
     private Vector3 offsetShadowWorldPositon;
 
@@ -63,6 +64,7 @@ public class WindowClass : MonoBehaviour
     {
         knockSFX = gameObject.GetComponent<AudioSource>();
         shadowCreature = gameObject.transform.Find("Shadow").gameObject;
+        windowBreakSound = gameObject.transform.Find("WindowBreakSound").GetComponent<AudioSource>();
 
         if (shadowCreature == null)
         {
@@ -87,36 +89,40 @@ public class WindowClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
+        if (!enemyAttackRef.AttackSequenceStarted())
         {
-            if (shadowCreature.activeSelf)
+            if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
             {
-                offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
-                shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
-
-                timerStarted = true;
-                //Debug.Log(shadowScreenPos);
-
-                if (EnemyOnScreen(screenWidth, screenHeight))
+                if (shadowCreature.activeSelf)
                 {
-                    if(shadowCreature.activeSelf)
-                        StartCoroutine(DisableShadowAfter(shadowVisiblePeriod));
+                    offsetShadowWorldPositon = shadowCreature.transform.position + new Vector3(0f, 0.4f, 0f);
+                    shadowScreenPos = playerCamera.WorldToScreenPoint(offsetShadowWorldPositon);
+
+                    timerStarted = true;
+                    //Debug.Log(shadowScreenPos);
+
+                    if (EnemyOnScreen(screenWidth, screenHeight))
+                    {
+                        if (shadowCreature.activeSelf)
+                            StartCoroutine(DisableShadowAfter(shadowVisiblePeriod));
+                    }
                 }
-            }
 
-            if (timerStarted)
-            {
-                shadowOnWindowTimer += Time.deltaTime;
+                if (timerStarted)
+                {
+                    shadowOnWindowTimer += Time.deltaTime;
 
-                if (shadowOnWindowTimer >= (shadowAttackPeriod - 10f) && !shouldPlayDangerSound)
-                {
-                    dangerSound.Play();
-                    shouldPlayDangerSound = true;
-                }
-                else if (shadowOnWindowTimer >= shadowAttackPeriod)
-                {
-                    StartCoroutine(enemyAttackRef.StartAttackSequence());
-                    timerStarted = false;
+                    if (shadowOnWindowTimer >= (shadowAttackPeriod - 10f) && !shouldPlayDangerSound)
+                    {
+                        dangerSound.Play();
+                        shouldPlayDangerSound = true;
+                    }
+                    else if (shadowOnWindowTimer >= shadowAttackPeriod)
+                    {
+                        StartCoroutine(enemyAttackRef.StartAttackSequence());
+                        windowBreakSound.Play();
+                        timerStarted = false;
+                    }
                 }
             }
         }

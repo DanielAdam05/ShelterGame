@@ -23,6 +23,9 @@ public class WindowManager : MonoBehaviour
     [SerializeField]
     private float KNOCK_GRACE_PERIOD = 15f;
 
+    [SerializeField]
+    private EnemyAttackCheck enemyAttackCheckRef;
+
     // Non-assignale variables
     private int windowListSize;
     private readonly List<WindowClass> unboardedWindows = new();
@@ -57,21 +60,24 @@ public class WindowManager : MonoBehaviour
 
     void Update()
     {
-        if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
+        if (!enemyAttackCheckRef.AttackSequenceStarted())
         {
-            knockTimer += Time.deltaTime;
-
-            if (knockTimer >= currentKnockCooldown)
+            if (!GameState.IsGamePaused() && !GameState.IsGameWon() && !GameState.IsGameLost())
             {
-                knockTimer -= currentKnockCooldown;
+                knockTimer += Time.deltaTime;
 
-                // Choose random window
-                randomWindowIdx = Random.Range(0, unboardedWindowsListSize);
-                unboardedWindows[randomWindowIdx].KnockOnWindow();
-                Debug.Log("Knocked on window " + randomWindowIdx);
+                if (knockTimer >= currentKnockCooldown)
+                {
+                    knockTimer -= currentKnockCooldown;
 
-                // Change random cooldown
-                currentKnockCooldown = Random.Range(minCooldown, maxCooldown); 
+                    // Choose random window
+                    randomWindowIdx = Random.Range(0, unboardedWindowsListSize);
+                    unboardedWindows[randomWindowIdx].KnockOnWindow();
+                    Debug.Log("Knocked on window " + randomWindowIdx);
+
+                    // Change random cooldown
+                    currentKnockCooldown = Random.Range(minCooldown, maxCooldown);
+                }
             }
         }
     }
